@@ -1,0 +1,70 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>MongoSH</h1>
+
+    
+<h2>MongoSH</h2>
+    <p>The shell to interact with mongoDB. use <code>mongosh</code> to call</p>
+    <h2>Selecting a db</h2>
+    <p>Listing databases</p><pre><code class="language-text-plain">show dbs</code></pre>
+    <p>choosing databases</p><pre><code class="language-text-plain">use {dbs Name}</code></pre>
+    <h2>(Create) Appending data to the database</h2>
+    <p>Mongo is pretty idiot proof here. if the data-path doesn't exists. it
+      wills it to existence</p>
+    <h5>insertOne()</h5>
+    <p>so to create a <code>name:john</code> property in a document under the collection
+      users under the database <code>someDB</code>
+    </p><pre><code class="language-text-plain">use dbs someDB
+collectionName.collectionNameNested.insertOne({name:john})</code></pre>
+    <p>It will jsut create all the field, collections and databases needed.</p>
+    <h5>insertMany()</h5>
+    <p>There is also insertMany(). It just takes an array of objects</p><pre><code class="language-text-plain">insertOne([{obj},{obj}])</code></pre>
+    <h2>Reading Data</h2>
+    <p>It's just a matter of specifying what you are selecting then it will simply
+      read</p><pre><code class="language-text-plain">collection.find({selector})</code></pre>
+    <p>Read how selection works <a href="MongoSH/Selecting%20Data.html">here</a>
+    </p>
+    <h3>Querying options</h3>
+    <h5>limit()</h5><pre><code class="language-text-plain">collection.find().limit({int})</code></pre>
+    <p>just limits to showing the number you put</p>
+    <h5>skip()</h5><pre><code class="language-text-plain">collection.find().limit({int})</code></pre>
+    <p>skips over number of elements you put. like <code>limit(25)</code>. find
+      elements after 25 indexes it returns</p>
+    <h5>sort()</h5><pre><code class="language-text-plain">collection.find().limit(prop1:-1, prop2:1)</code></pre>
+    <p>Sorts the data based on the property given in the argument</p>
+    <p><code>-1</code> is for descending order and <code>1</code> is for ascending
+      order</p>
+    <h5>You can chain options</h5><pre><code class="language-text-plain">collection.find().limit(prop1:-1, prop2:1).skip(1).limit(2)</code></pre>
+    <h2>Updating Data</h2>
+    <h5>Replacing data</h5>
+    <p>Below will edit the first&nbsp;</p><pre><code class="language-text-plain">updateOne({selector}, {prop:value})</code></pre>
+    <p>usually the selector is <code>id:</code>
+    </p>
+    <h5>Iterating over numbers</h5>
+    <p>You can also increment numbers by <code>{$inc: {age: 3}}</code>. This will
+      increment the property by 3. Same for <code>$dec</code>.</p>
+    <h5>Removing properties&nbsp;</h5><pre><code class="language-text-plain">{$unset: {propName:""}}</code></pre>
+    <p>Deleting properties</p>
+    <h5>Renaming properties</h5><pre><code class="language-text-plain">{$rename: {oldName: “newName”}}</code></pre>
+    <h5>Handling arrays</h5>
+    <p>You can push into and pull out elements from arrays as well</p><pre><code class="language-text-plain">{$pull: {array:element}}
+{$push: {array:element}}</code></pre>
+    <h3>updatingMany()</h3>
+    <p>This will select all that the selector selects</p><pre><code class="language-text-plain"> updateMany({selector}, {prop:value});</code></pre>
+    <h3>replaceOne()</h3>
+    <p>This is a pretty nuclear option so use this with caution. It replaces
+      the document wholesale.</p><pre><code class="language-text-plain"> replaceOne({selector}, {new object});</code></pre>
+    <h2>Deleting data</h2><pre><code class="language-text-plain">deleteOne({selector});
+deleteMany({selector});</code></pre>
+
+  </body>
+
+</html>

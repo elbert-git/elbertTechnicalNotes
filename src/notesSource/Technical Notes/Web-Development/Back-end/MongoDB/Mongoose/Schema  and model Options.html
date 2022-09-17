@@ -1,0 +1,59 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Schema  and model Options</h1>
+
+    
+<h2>Data types</h2>
+    <p>The different data types a schema can hold.&nbsp;</p>
+    <ul>
+      <li>string</li>
+      <li>number</li>
+      <li>date</li>
+      <li>schema: have another document structure as a type</li>
+      <li>[dataType]: array of that type</li>
+      <li>Javascript objects</li>
+    </ul>
+    <p>Example</p><pre><code class="language-text-plain">const userSchema = new mongooose.Schema({
+	name: String,
+	age: Number,
+	createdAt: Date,
+	bestFriend: mongoose.SchemaTypes.ObjectId,
+	hobbies: [string],
+	address:{
+		street: String,
+		city: String
+	},
+	customDocSchema: varToDocSchema,
+});</code></pre>
+    <h2>Data Validation</h2>
+    <p>You can set data validation within the model itself. Validation like:&nbsp;</p>
+    <ul>
+      <li>required</li>
+      <li>immutability</li>
+      <li>min and max</li>
+      <li>and even custom validation&nbsp;</li>
+    </ul><pre><code class="language-text-plain">const doc = new mongoose.Schema({
+	age: {
+		type: Number, 
+		min: 1,
+		max: 100,
+		immutable: true,
+		required: true
+		validate: { // custom validation logic
+			validator: (value)=&gt;{value % 2 === 0},
+			message: (props) =&gt; {props.value} is not even
+		}
+	}
+});</code></pre>
+
+  </body>
+
+</html>

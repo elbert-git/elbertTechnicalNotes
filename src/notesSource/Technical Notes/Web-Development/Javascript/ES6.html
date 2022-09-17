@@ -1,0 +1,32 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>ES6</h1>
+
+    
+<h2>The modern Javascript</h2>
+    <p>Like the title says, it's a modern agreed upon amendment to the language.
+      Bringing mechanics like arrow functions, let and const and async/awaits.</p>
+    <h2>let and const and arrow fucntions</h2>
+    <p>See Javascript fundemantals: variables and functions</p>
+    <h2>Asycn/Await</h2>
+    <p>Allows a cleaner way of writing asynchronous code like for data fetching</p><pre><code class="language-text-plain">async fucntion getDataFromDatabase(){
+	const data = await fetch(url) // await pauses the function before letting the rest of the code run
+	return data
+}</code></pre>
+    <h3>Top level awaits</h3>
+    <p>Sometimes you want the code to just run with await from the get go. In
+      deno I think you can have top level awaits without thinking to much but
+      in node and browsers you need to wrap the initial code in some function.</p><pre><code class="language-text-plain">const init = ()=&gt;{const data = fetch({url})} // create the func
+init() // call the fucnt</code></pre>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

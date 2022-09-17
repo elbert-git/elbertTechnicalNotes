@@ -1,23 +1,22 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+export const frame:HTMLIFrameElement = document.querySelector('iframe')!;
+frame.src = new URL(`notesSource/Zettelkasten.html`, import.meta.url).href
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+// on iframe load run this func
+frame.onload = ()=>{
+  // get a tags from loaded iframe document
+  const aTags = frame.contentDocument?.body.querySelectorAll('a');
+  // make sure a tags don't click out
+  for (let index = 0; index < aTags!.length; index++) {
+    aTags![index].addEventListener('click', (e)=>{
+      e.preventDefault();
+    })
+  }
+}
+
+
+// simulate a page load call
+// this is also how you change pages
+document.querySelector('button')?.addEventListener('click', ()=>{
+  frame.src = new URL(`notesSource/Technical%20Notes/Crypto%20and%20Blockchains.html`, import.meta.url).href
+})

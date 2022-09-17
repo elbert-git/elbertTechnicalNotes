@@ -1,0 +1,167 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>ThreeJS</h1>
+
+    
+<h2>ThreeJS<img class="image-style-align-right image_resized" style="width:27.21%;" src="ThreeJS/image.png" alt="Image result for three js"></h2>
+    <p>It's an javascript abstraction of webGL. Allows you to render 3D models
+      beautifully in a website</p>
+    <h3>WebGL</h3>
+    <p>A javascript API to draw triangles in an HTML Canvas. Utilizes the GPU
+      as well. But it's very low level, almost on the GPU level. This is what
+      ThreeJS abstracts.</p>
+    <h2>Installation and setup</h2>
+    <h3>Downloading via script tag</h3><pre><code class="language-text-plain">&lt;script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"&gt;&lt;/script&gt;</code></pre>
+    <h3>Downloading via NPM</h3><pre><code class="language-text-plain">npm install three</code></pre>
+    <h3>Creating the ThreeJS instance</h3><pre><code class="language-text-plain">import * as THREE from 'three';</code></pre>
+    <h2>Creating a basic scene</h2>
+    <p>Here's a quick boiler plate</p>
+    <section class="include-note" data-note-id="GHeBZUwfQoct"
+    data-box-size="medium">&nbsp;</section>
+    <p>To setup a three js file you need to setup:</p>
+    <ul>
+      <li>create a threejs scene&nbsp;</li>
+      <li>Create camera&nbsp;</li>
+      <li>create renderer</li>
+      <li>create objects with a geometry and material</li>
+      <li>create an update function&nbsp;</li>
+      <li>listen to screen resize events</li>
+    </ul>
+    <h3>Creating a ThreeJS scene</h3><pre><code class="language-text-plain">const scene = new THREE.Scene()</code></pre>
+    <p>A scene just a collection of objects like a .blend scene file.</p>
+    <h3>Creating a camera</h3><pre><code class="language-text-plain">const camera = new THREE.PerspectiveCamera(
+	{fov},
+	{aspectRatio},
+	{optional: nearPlane},
+	{optional: farPlane}
+)</code></pre>
+    <p>Above creates a perspective camera with an fov and aspect ratio. near
+      and far planes are optional. See more about other camera types and camera
+      controls here</p>
+    <section class="include-note" data-note-id="p51C0ypu0LB2"
+    data-box-size="small">&nbsp;</section>
+    <h3>Create a renderer</h3><pre><code class="language-text-plain">// create renderer
+const renderer = new THREE.WebGLRenderer();
+// set renderer size
+renderer.setSize( window.innerWidth, window.innerHeight );
+// connect renderer to html canvas
+document.body.appendChild( renderer.domElement );</code></pre>
+    <p>To create a renderer renders the a scene and outputs an html canvas.&nbsp;</p>
+    <h3>Creating Mesh Objects</h3>
+    <p>A mesh object has 2 components. A material and geometry object. The object
+      need to be added to scene to be rendered.</p><pre><code class="language-text-plain">// create cube geometry
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+// create material 
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+// create cube object from cube geo and material
+const cube = new THREE.Mesh( geometry, material );
+// add cube to scene
+scene.add( cube );</code></pre>
+    <p>There's a lot glossed over here lol. So here are the indepth articles</p>
+    <section
+    class="include-note" data-note-id="76WGcBvZ9TU5" data-box-size="small">&nbsp;</section>
+      <section class="include-note" data-note-id="jvHj6iZ1LrkT"
+      data-box-size="small">&nbsp;</section>
+      <section class="include-note" data-note-id="yWNbjtfEimkf"
+      data-box-size="small">&nbsp;</section>
+      <section class="include-note" data-note-id="Gtxq0HKBnUYi"
+      data-box-size="small">&nbsp;</section>
+      <section class="include-note" data-note-id="w1T23sZBpNDM"
+      data-box-size="small">&nbsp;</section>
+      <h3>Rendering and update loops</h3>
+      <p>You can call render by&nbsp;</p><pre><code class="language-text-plain">renderer.render( scene, camera );</code></pre>
+      <p>But that renders a single frame to the canvas once. &nbsp;To create an
+        interactive loop you need to create an update function to continuously
+        loop</p><pre><code class="language-text-plain">function animate() {
+    // loop request new frame
+    requestAnimationFrame( animate );
+
+    // .... logic every frame
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+
+    // call a frame render
+    renderer.render( scene, camera );
+};</code></pre>
+      <h5>Clock for delta and elapsed time</h5><pre><code class="language-text-plain">// create clock time
+const clock = new THREE.Clock()
+
+// update loop
+function animate() {
+    // loop request new frame
+    requestAnimationFrame( animate );
+
+    // .... logic every frame
+    cube.rotation.x += 0.01*clock.getDelta(); // transforms with delta time
+    cube.rotation = clock.getElapsedTime()// runtime to drive animations
+
+    // call a frame render
+    renderer.render( scene, camera );
+};</code></pre>
+      <h5>Canvas control</h5>
+      <p>You will find that if you resize the window the render will go all stretched
+        and wonky. &nbsp;This is due to a mistmatched render size and canvas size.
+        To mitigate this you need to add func on a a window resize event. (You
+        would also need to update the camera render aspect ratio).</p><pre><code class="language-text-plain">// on window resize. update cam and renderer sizes
+window.addEventListener('resize', () =&gt;
+{
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    // set pixel ration
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})#</code></pre>
+      <h5>Handling pixel ratio</h5>
+      <p>Since Apple's retina display, device softwares will multiply the number
+        of physical pixels. This is to achieve higher quality renders. Long story
+        short just add this to your resize event listener</p><pre><code class="language-text-plain">//set pixel ration
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))</code></pre>
+      <h5>Handling fullscreen</h5>
+      <p>It's fullscreening the canvas if you double click or calkl the fullscreen
+        function.</p>
+      <h2>Better Renders</h2>
+      <ul>
+        <li><a href="ThreeJS/Lighting.html">lighting&nbsp;</a>
+        </li>
+        <li><a href="ThreeJS/Shadows.html">shadows</a>
+        </li>
+        <li>post processing</li>
+      </ul>
+      <h2>UX</h2>
+      <ul>
+        <li>performance&nbsp;</li>
+        <li>optimisations</li>
+        <li>loading screen&nbsp;</li>
+        <li>Loading managers</li>
+      </ul>
+      <h2>Miscellaneous Topics</h2>
+      <ul>
+        <li>physics</li>
+        <li><a href="ThreeJS/Raycasting.html">raycasting</a>
+        </li>
+        <li><a href="ThreeJS/Animations.html">Animating in ThreeJS</a>
+        </li>
+        <li><a href="ThreeJS/GUI%20helpers.html">Debug GUIs</a>
+        </li>
+        <li>particles</li>
+        <li><a href="ThreeJS/3D%20text.html">3D text</a>
+        </li>
+        <li><a href="ThreeJS/Creating%20Annotations%20and%20label.html">Annotations</a>
+        </li>
+      </ul>
+  </body>
+
+</html>

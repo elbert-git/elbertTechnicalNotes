@@ -1,0 +1,81 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Lighting</h1>
+
+    
+<h2>Creating lights</h2>
+    <p>most of them follows the format off</p><pre><code class="language-text-plain">const light = new THREE.{LightType}({color}, {intensity});</code></pre>
+    <h2>Lighting types</h2>
+    <ul>
+      <li>ambient light, applies a general colour to everything</li>
+      <li>directional: sun-light</li>
+      <li>hemisphere: cheap sky lighting. a gradient across the Y axis</li>
+      <li>point light: it's a point…</li>
+      <li>rect area</li>
+      <li>spot light</li>
+    </ul>
+    <h2>Handling hdri</h2>
+    <h3>Importing cubemap texture</h3>
+    <p>ThreeJS uses a cubemap texture. use this website to convert textures to
+      the correct for mat</p>
+    <blockquote>
+      <p><a href="https://matheowis.github.io/HDRI-to-CubeMap/">https://matheowis.github.io/HDRI-to-CubeMap/</a>
+      </p>
+    </blockquote>
+    <p>then import it by&nbsp;</p><pre><code class="language-text-plain">import { CubeTextureLoader } from 'three';
+const environmentMap = cubeTextureLoader.load([
+    '/assets/hdri/px.png',
+    '/assets/hdri/nx.png',
+    '/assets/hdri/py.png',
+    '/assets/hdri/ny.png',
+    '/assets/hdri/pz.png',
+    '/assets/hdri/nz.png'
+])</code></pre>
+    <h3>Global renderer environment map</h3>
+    <p>You can set a global environmap by setting it as the scene's environment</p><pre><code class="language-text-plain">scene.environment = environmentmap;</code></pre>
+    <h3>Per object environment map</h3>
+    <p>You can also set it per object to optimise performance. By setting it
+      onto devices that need it</p><pre><code class="language-text-plain">meshObject.material.envMap = environmentMap;</code></pre>
+    <h3>HDRI intensity.&nbsp;</h3>
+    <p>By default you can't change lighting intensity of an hdri but you can
+      brighten up the whole image by <a href="ToneMapping.html">tone mapping</a>
+    </p>
+    <h2>Performances ranked</h2>
+    <p>
+      <img class="image_resized" style="width:25%;" src="Lighting/image.png">
+    </p>
+    <h2>Depth Fog</h2><pre><code class="language-text-plain">// create fog with colour and and near and far planes
+const fog = new THREE.Fog('#262837', 1, 15)
+// add to scene
+scene.fog = fog
+
+// change renderer background colour
+renderer.setClearColor('#262837')</code></pre>
+    <h2>Light helpers</h2>
+    <figure class="image image_resized" style="width:68.58%;">
+      <img src="Lighting/014.png">
+    </figure>
+    <p>You can add light helpers to see where they are. Just making them visible
+      for debug</p><pre><code class="language-text-plain">const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.2)
+scene.add(hemisphereLightHelper)
+
+const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0.2)
+scene.add(directionalLightHelper)
+
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2)
+scene.add(pointLightHelper)</code></pre>
+    <h2>Miscellaneous</h2>
+    <ul>
+      <li>You can bake light in blender for better performance</li>
+    </ul>
+  </body>
+
+</html>

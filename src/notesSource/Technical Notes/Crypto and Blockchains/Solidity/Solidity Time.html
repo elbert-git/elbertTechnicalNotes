@@ -1,0 +1,36 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Solidity Time</h1>
+
+    
+<h2><strong>Time</strong></h2>
+    <h5>Epoch time: timing standard of solidity</h5>
+    <p>Solidity uses epoch time to track time. Which is the number of seconds
+      that have elapsed from 1970/01/01. Which is just a large uint.</p>
+    <h5>Keywords</h5><pre><code class="language-text-plain">now;                        // current epoch uint
+uint min  = 1 minutes       // num of seconds in a minute
+uint hour = 1 hour          // num of seconds in an hour
+uint week = 1 weeks         // num of seconds in a week
+</code></pre>
+    <h5>Useful tool :</h5>
+    <p><a href="https://www.epochconverter.com/">epoch time converter</a>
+    </p>
+    <h5>Some notes on usage</h5>
+    <ul>
+      <li>you can handle minting phases by simply checking if <code>now &gt; mintingPhaseTime</code>
+      </li>
+      <li>while this can help schedule 'contract modes'</li>
+      <li>this can't do 'real cron jobs'. Can't call a function on schedul. The
+        fucntion must be called to check the time then it runs some logic.</li>
+    </ul>
+  </body>
+
+</html>

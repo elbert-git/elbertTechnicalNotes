@@ -1,0 +1,30 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Animations</h1>
+
+    
+<h2>Using an update loop</h2>
+    <p>You can use an update loop to animation items simply</p><pre><code class="language-text-plain">// in update loop
+meshObj.rotation.x+=20;</code></pre>
+    <h2>Using Gsap</h2>
+    <blockquote>
+      <p><a href="../GSAP.html">GSAP notes</a>
+      </p>
+    </blockquote>
+    <p>Instead of targetting elements. you target specific floats or vectors</p><pre><code class="language-text-plain">gsap.to(mesh.position, {duration: 1, x: 5}); </code></pre>
+    <h2>Imported model controls</h2>
+    <blockquote>
+      <p><a href="Importing%20Models.html">see importing models page</a>
+      </p>
+    </blockquote>
+  </body>
+
+</html>

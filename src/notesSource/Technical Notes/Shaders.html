@@ -1,0 +1,47 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Shaders</h1>
+
+    
+<h2>General</h2>
+    <p>They are the programs that render images with 3D data. They are written
+      as GLSL files. They process a lot of data like:</p>
+    <ul>
+      <li>vertex positions</li>
+      <li>texture</li>
+      <li>light parameters</li>
+      <li>camera transformations and many more</li>
+    </ul>
+    <h2>Vertex and Fragment shaders</h2>
+    <h5>Vertex Shaders</h5>
+    <p>Handle positionling vertices in 2D space. taking into consideration the
+      vertex data and camera parameters</p>
+    <h5>Fragment shaders</h5>
+    <p>These color in portion of the screens. These actually shade the color
+      in depending on the lights. Fragment shaders always run after vertex shaders.</p>
+    <h2>Uniforms and attributes</h2>
+    <p>These are just some data categories to consider in shaders.&nbsp;</p>
+    <h5>Uniforms</h5>
+    <p>Are data that persists between vertices of a single mesh. Like the transforms
+      of mesh origin in spacel</p>
+    <h5>Attributes</h5>
+    <p>attributes are data that vary between vertices. like the local position
+      of each vertext</p>
+    <h2>Why bother with custom shaders</h2>
+    <p>In most 3D contexts there are pre-made shaders given to you. Covering
+      most needs. Things like a PBR shaders are uber shaders that cover everything
+      you would most likely need.&nbsp;</p>
+    <p>But these come at the expense of performance if you can write only what
+      you need. Performance will be drastically improved.&nbsp;</p>
+    <p>They also come in handy for very specific visual requirements</p>
+  </body>
+
+</html>

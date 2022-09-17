@@ -1,0 +1,140 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Vue Widgets</h1>
+
+    
+<h2><strong>Creating a Vue widget</strong></h2>
+    <p>Creating re-usable contained vue applications that can be inserted into
+      html pages</p>
+    <h2><strong>Import and setup</strong></h2>
+    <p>Import vue in header</p><pre><code class="language-text-plain">&lt;!-- Import Vue.js --&gt;
+&lt;script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"/&gt;</code></pre>
+    <p>create the mount point. This is the root of the vue app</p><pre><code class="language-text-plain">&lt;div id="app"&gt;
+  &lt;!-- vue html code goes here. or you can put in main object --&gt;
+&lt;/div&gt;</code></pre>
+    <p>Setup the vue app with a script</p><pre><code class="language-text-plain">&lt;!-- Import Js --&gt;
+&lt;script src="./main.js"&gt;&lt;/script&gt;</code></pre>
+    <p>inside the script</p><pre><code class="language-text-plain">const app = Vue.createApp({/*you put vue code here*/})</code></pre>
+    <p>Vue widget works by what is inside that object you pass into the createApp
+      function. all data and fucntionaliti is inside that object.</p>
+    <h2><strong>Structure of main object</strong></h2>
+    <p>the main object is like is a full component file. But in an JS object
+      form.</p>
+    <h3>Template</h3>
+    <p>The html you want this component to render goes here. It's like a return
+      in react.</p><pre><code class="language-text-plain">const app = Vue.createApp({
+  template: `
+    &lt;div&gt;HTML goes here&lt;/div&gt;
+  `
+});</code></pre>
+    <h3>Data</h3>
+    <p>This is your component props/state. The current properties of the component.
+      It's a function that returns an object that contains all the datas</p><pre><code class="language-text-plain">const app = Vue.createApp({
+  Data(){
+    return {
+      varName: val;
+    }
+  }
+});</code></pre>
+    <h3>Computed properties</h3>
+    <p>These are properties that are derived from 2 or more other properties.
+      Honestly, this could be a fucntion. But hey it's a thing.</p><pre><code class="language-text-plain">const app = Vue.createApp({
+  Data(){
+    return {
+      a: 1,
+      b: 2
+    }
+  },
+  computed: {
+    sum(){return this.a + this.b}
+  }
+});</code></pre>
+    <h3>Methods</h3>
+    <p>These are fucntions scoped into the component. ya know this.</p><pre><code class="language-text-plain">const app = Vue.createApp({
+  methods: {
+    someFunc(){
+      // do something
+      // this is how you change the component data
+      this.someVarInThisProp = val ;
+    }
+  }
+});</code></pre>
+    <h3>props</h3>
+    <p>this are the custom html attributes you can add into your components.</p><pre><code class="language-text-plain">const app = Vue.createApp({
+  props: {
+    propName:{
+      type: {typeofvar},
+      required: false // put true if required
+    }
+  }
+});</code></pre>
+    <h2>Combining Javascript and HTML</h2>
+    <h3>Inputting JS data in innerHTML</h3><pre><code class="language-text-plain">&lt;div&gt;{{varName}}&lt;/div&gt;
+&lt;div&gt;{{SomeFuncThatReturnsData()}}&lt;/div&gt;</code></pre>
+    <h3>Inputting JS Data in html attributes</h3>
+    <p>you put `vbind`</p><pre><code class="language-text-plain">&lt;img :src="varName" :alt="SomeFuncThatReturnsData()"/&gt;</code></pre>
+    <h3>&nbsp;Conditional rendering</h3>
+    <p>You can use v-if. but this completely mounts and unmounts the element.
+      So this shouldn't be toggled often</p><pre><code class="language-text-plain">&lt;div v-if='someBoolean'&gt;Only show this if true &lt;/div&gt;
+&lt;div v-else-if='someBoolean'&gt;show this if something else&lt;/div&gt;
+&lt;div v-else&gt;show this if anything else&lt;/div&gt;</code></pre>
+    <p>But if you need it to toggle often, use v-show. This just toggles style
+      display: none.</p><pre><code class="language-text-plain">&lt;div v-show='someBoolean'&gt;Only show this if true &lt;/div&gt;</code></pre>
+    <h3>Loop rendering</h3>
+    <p>You can render elements with loops</p><pre><code class="language-text-plain">&lt;div v-for="(val, index) in someArray"&gt;{{val}}&lt;div&gt;</code></pre>
+    <p>The above will render a bunch of divs based on the array</p>
+    <p>You can do the same with components</p><pre><code class="language-text-plain">&lt;component
+v-for="(item,index) in arrayName"
+:item="item.property"
+:key="index"
+&gt;&lt;/component&gt;</code></pre>
+    <h3>Events and triggering functions</h3>
+    <p>the format is just @{eventName}</p><pre><code class="language-text-plain">&lt;button @click="someFunc()"&gt;&lt;/button&gt;</code></pre>
+    <p>you can pass arguments like so</p><pre><code class="language-text-plain">&lt;button @click="someFunc(arg, $event, this.varName)"&gt;&lt;/button&gt;</code></pre>
+    <p>You can pass any arbitrary arg. But the event itself will be $event and
+      getting a var from the component data will be this.varName</p>
+    <p>Below is how you prevent the default event fucntion.</p><pre><code class="language-text-plain">&lt;form @submit.prevent="onSubmit"&gt;&lt;/form&gt;</code></pre>
+    <p>You can also listen for keyboard/mouse input events. More info on that
+      here <a href="https://vuejs.org/guide/essentials/event-handling.html#key-modifiers">https://vuejs.org/guide/essentials/event-handling.html#key-modifiers</a>
+    </p>
+    <h3>Styling in vue</h3>
+    <p>Like in react you use style objects on top of using css classes.</p><pre><code class="language-text-plain">&lt;my-component :class="{ display: flex }"&gt;&lt;/my-component&gt;</code></pre>
+    <h3>Props</h3>
+    <p>Same like any data. use the colon.</p><pre><code class="language-text-plain">&lt;my-component :propName="val"&gt;&lt;/my-component&gt;</code></pre>
+    <h2><strong>Components</strong></h2>
+    <h3>Creating components</h3>
+    <p>import your component js file into html</p><pre><code class="language-text-plain">&lt;script src="./main.js"&gt;&lt;/script&gt;</code></pre>
+    <p>Inside the component script</p><pre><code class="language-text-plain">app.component('MyComponentName',{/*component code goes here*/});</code></pre>
+    <p>Structure is the same way you would the main component</p>
+    <p>you c an also chain componenet creation like so.</p><pre><code class="language-text-plain">app
+  .component('ComponentA', {/*component code goes here*/})
+  .component('ComponentB', {/*component code goes here*/})
+  .component('ComponentC', {/*component code goes here*/})</code></pre>
+    <h3>Importing components</h3>
+    <p>After you import the component script into the file.</p><pre><code class="language-text-plain">&lt;componenetName/&gt;</code></pre>
+    <h3>Creating and using props;</h3>
+    <p>create prop</p><pre><code class="language-text-plain">app.component({
+  props: {
+    propName:{
+      type: {typeofvar},
+      required: false // put true if required
+    }
+  }
+});</code></pre>
+    <p>use prop</p><pre><code class="language-text-plain">&lt;my-component :propName="val"&gt;&lt;/my-component&gt;</code></pre>
+    <h3>Custom events</h3>
+    <p>events are how child components reach into parent components to communciate.</p>
+    <p>Creating an event</p><pre><code class="language-text-plain">&lt;button @click="$emit('someEvent', arg1, arg2)"&gt;click me&lt;/button&gt;</code></pre>
+    <p>Making parent listen for events</p><pre><code class="language-text-plain">&lt;MyComponent @some-event="callback" /&gt;</code></pre>
+
+  </body>
+
+</html>

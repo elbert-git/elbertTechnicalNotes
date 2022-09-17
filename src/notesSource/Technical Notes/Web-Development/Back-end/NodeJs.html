@@ -1,0 +1,74 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>NodeJs</h1>
+
+    
+<h2><strong>Node JS</strong></h2>
+    <p>A runtime development for javascript. Allows javascript to run on an OS
+      like windows/linux/mac. Instead of just a browser. Allows server programs
+      to be written in javascript</p>
+    <h2><strong>Installation</strong></h2>
+    <p><strong>Arch</strong>
+    </p><pre><code class="language-text-plain">sudo pacman -S npm</code></pre>
+    <p><strong>Ubuntu/Debian</strong>
+    </p><pre><code class="language-text-plain">sudo apt-get install npm</code></pre>
+    <h2><strong>Node Version manager</strong></h2>
+    <p>Sometimes you just need a particular version of node</p>
+    <p><strong>Install nvm</strong>
+    </p><pre><code class="language-text-plain">sudo apt-get install nvm</code></pre><pre><code class="language-text-plain">sudo pacman -S install nvm</code></pre>
+    <h5>Usage</h5>
+    <ul>
+      <li>To list down all available version</li>
+    </ul><pre><code class="language-text-plain">nvm ls-remote</code></pre>
+    <ul>
+      <li>to install one particular version</li>
+    </ul><pre><code class="language-text-plain">nvm install [version.number]</code></pre>
+    <h2><strong>Setting up a node project directory</strong></h2><pre><code class="language-text-plain">npm init -y</code></pre>
+    <h3>When receiving an exisiting project</h3><pre><code class="language-text-plain">npm install</code></pre>
+    <p>this will install the dependencies needed to run the project.</p>
+    <h2><strong>Project Structure</strong></h2>
+    <h3>node_modules</h3>
+    <p>this is where all the node modules are stored for the project.</p>
+    <h3>package.json</h3>
+    <p>this is the config file. you can put quick npm scripts here.</p>
+    <p>this also contains a roster of project and development dependencies.</p>
+    <h2><strong>Node modules installation</strong></h2>
+    <p>===================================================================</p>
+    <h3>Installing project dependencies</h3>
+    <p>These are modules that are required for the project work on runtime. Like
+      react, a-frame, threejs, vue, firebase</p><pre><code class="language-text-plain">npm install {module name} --save //-s for short
+</code></pre>
+    <h3>Installing development dependencies</h3>
+    <p>These are modules that help develop or compile the project. not needed
+      on the project's runtime. Like webpack, babel, polyfill</p><pre><code class="language-text-plain">npm install {module name} --save-dev //-D for short </code></pre>
+    <h2><strong>Custom Node modules</strong></h2>
+    <h3>Traditional node modules</h3>
+    <h5>Exporting stuff in node.</h5><pre><code class="language-text-plain">modules.export = {objects you want to export}</code></pre>
+    <h5>Importing stuff in node</h5><pre><code class="language-text-plain">const varName = require('path/to/file'); </code></pre>
+    <h3>ES6 imports and exports</h3>
+    <p>There is a new es6 way of importing stuff in node</p>
+    <h5>Exporting stuff</h5><pre><code class="language-text-plain">export const someVar 
+export default const defaultSomeVar // imported wihthout curly brackets</code></pre>
+    <h3>Importing stuff</h3><pre><code class="language-text-plain">import {someVar} from '/path/to/file';
+import defaultSomeVar from '/path/to/file';</code></pre>
+    <h2><strong>DotEnv</strong></h2>
+    <p>===================================================================</p>
+    <p>reading secret varialbes that shouldnt be pushed to git</p><pre><code class="language-text-plain">// read env
+require('dotenv').config()
+// get env variables
+const token = process.env.TOKEN;
+</code></pre>
+    <p>inside the .env</p><pre><code class="language-text-plain">TOKEN="{secretToken}"
+</code></pre>
+
+  </body>
+
+</html>

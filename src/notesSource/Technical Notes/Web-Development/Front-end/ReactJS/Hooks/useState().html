@@ -1,0 +1,40 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>useState()</h1>
+
+    
+<h2><strong>useState()</strong></h2>
+    <p>dynamic variables for the component. Changing the state signals to react
+      this component has to re-render</p>
+    <p><strong>Creating a state</strong>
+    </p><pre><code class="language-text-plain">const [datas, setData] = useState({initialValue});
+</code></pre>
+    <p><strong>The setState() function</strong>
+    </p>
+    <p>To change the state you call the state's set function</p><pre><code class="language-text-plain">setData({new State})
+</code></pre>
+    <p>Best to not edit the state variable directly. But use this to replace
+      the current state with a new state.</p>
+    <p>Note that setState is an async function.</p>
+    <p><strong>Passing the setState(functions)</strong>
+    </p>
+    <p>you can pass the `setState()` function throughout the app via react context
+      or prop-drilling. This allows other components to trigger a re-render or
+      change state</p>
+    <p><strong>"console.log()-ing" state</strong>
+    </p>
+    <p>due to it being an async state. you need the below <a href="useEffect().html">useEffect </a>to
+      get current state.</p><pre><code class="language-text-plain">useEffect(()=&gt;{console.log(state)}, [state])
+</code></pre>
+
+  </body>
+
+</html>

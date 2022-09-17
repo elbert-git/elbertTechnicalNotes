@@ -1,0 +1,62 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Solidity</h1>
+
+    
+<h2><strong>In General</strong></h2>
+    <p>It's a high level language to code smart contracts on the ethereum blockchain.
+      Not only for Ethereum but most commonly associated with it.</p>
+    <p><strong>Smart Contracts</strong>
+    </p>
+    <p>think of them as a public public javascript object in the blockchain(or
+      the cloud). they have properties and functions that users can call</p>
+    <h2><strong>Basic Structure</strong></h2><pre><code class="language-text-plain">pragma solidity ^0.8.4;
+
+contract BasicContract{
+  address owner;
+
+  constructor(){
+    owner = msg.sender;
+  }
+  
+  function someFunc() public returns (bool){
+  	// function code
+  }
+}
+</code></pre>
+    <ul>
+      <li><strong>Version number</strong>: every solidity file needs a version number
+        to tell what compiler to use</li>
+      <li><strong>contract object:</strong> the contract itself. behaves like a public
+        and cloud javascript object</li>
+      <li><strong>constructor</strong>: a fucntion that is called at the the deployment
+        of the contract. and only then. effectively a fucntion that runs on start();</li>
+      <li><strong>contract functions: </strong>To allow other people to call or
+        to call these internally</li>
+    </ul>
+    <h2><strong>Topics</strong></h2>
+    <ul>
+      <li><a href="Solidity/Solidity%20Variables.html">Variables</a>
+      </li>
+      <li><a href="Solidity/Solidity%20Functions.html">Functions</a>
+      </li>
+      <li><a href="Solidity/Solidity%20Events.html">Events</a>
+      </li>
+      <li><a href="Solidity/Solidity%20Time.html">Time</a>
+      </li>
+      <li><a href="RemixIDE/Testing%20in%20Remix.html">Testing</a>
+      </li>
+      <li><a href="NFTs.html">NFT Development</a>
+      </li>
+    </ul>
+  </body>
+
+</html>
