@@ -1,0 +1,59 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Vue SPAs</h1>
+
+    
+<h2>Project setup</h2>
+    <p><a href="../Vite.html">Just use vite</a>
+    </p>
+    <h3>Vue's entry point</h3>
+    <p>The main js is the main entry point of the app, it renders the vue components
+      into the root div</p>
+    <h2>The Vue Component</h2>
+    <h3>Structure</h3><pre><code class="language-text-plain">&lt;script setup lang="ts"&gt;
+	defineProps&lt;{ msg: string }&gt;()
+&lt;/script&gt;
+
+&lt;template&gt;
+  	&lt;h1&gt;{{ msg }}&lt;/h1&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+	.read-the-docs {
+  	color: #888;
+	}
+&lt;/style&gt;</code></pre>
+    <p>Like a vue widget there are essentially 3 parts, the script, template
+      and style. divided by html like tags. it operates the same as the widget
+      version</p>
+    <h3>Importing components</h3>
+    <p>To import you have to import the component in the script tag then register
+      it as a component. Then you can use the component in the html.</p>
+    <p>Importing the component</p><pre><code class="language-text-plain">import {component} from './path/to/component.vue';
+
+&lt;script&gt;
+	export default {
+
+  		components: {
+
+    			ComponentA
+
+  			}
+
+	}
+&lt;/script&gt;</code></pre>
+    <p>Then using it as an html tag</p><pre><code class="language-text-plain">&lt;template&gt;
+	&lt;component/&gt;
+&lt;/template&gt;</code></pre>
+
+  </body>
+
+</html>

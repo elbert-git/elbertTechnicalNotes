@@ -1,0 +1,92 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Javascript Object Oriented Programming</h1>
+
+    
+<h2>Object oriented programming</h2>
+    <p>Dividing the program into different sub-programs that can be connected
+      together. This is mostly done by creating &nbsp;whole lot of classes</p>
+    <h2>Creating Classes</h2>
+    <p>Creating a class</p><pre><code class="language-text-plain">class SomeClass(){
+	constructor(argument){
+		this.property = argument;
+		this.otherPropert = someOtherValue;
+	}
+	someMethod(){
+		// code
+	}
+}</code></pre>
+    <p>instantiating a class</p><pre><code class="language-text-plain">const instance = new SomeClass(argument);</code></pre>
+    <h3>The constructor</h3>
+    <p>This is the initial start() of the class and where you declare the internal
+      functions you declare the them with&nbsp;</p><pre><code class="language-text-plain">this.propertyName = value</code></pre>
+    <h2>Inheritance</h2>
+    <p>You can inherit from classes to derive it's properties and methods</p><pre><code class="language-text-plain">class ChildClass Extends ParentClass{
+	constructor(args){
+		super(args)
+	}
+}</code></pre>
+    <p>The <code>super</code> function calls the parent constructor</p>
+    <h2>`This`</h2>
+    <p><code>this</code> &nbsp;is how you refer to the classes variables and properties</p><pre><code class="language-text-plain">this.classMethod();</code></pre>
+    <h3>Binding this</h3>
+    <p>Note that sometimes the way methods/properties are called the <code>this</code> will
+      be confused. To bind <code>this</code> into something specific use the bind
+      method</p><pre><code class="language-text-plain">someMethod.bind({classInstance/object})</code></pre>
+    <p>The bind method will replace all mentions of this with the specific value
+      you give it. It basically close the function and replaces all mentions
+      of <code>this</code>
+    </p>
+    <h2>Private and Static</h2>
+    <h3>Private</h3>
+    <p>You can make an internal property of value not available to outside of
+      the class</p><pre><code class="language-text-plain">class SomeClass(){
+	constructor(argument){
+		#this.property = argument;
+		#this.otherPropert = someOtherValue;
+	}
+	#someMethod(){
+		// code
+	}
+}</code></pre>
+    <p>Just preface the class properties and values with <code>#</code>
+    </p>
+    <h3>Static</h3>
+    <p>Statics are properties and methods that belong to the class type and not
+      an instance. They enable you call methods/properties of a whole class rather
+      than an individual instance. like <code>Math.Pi</code>. Note how you don't
+      need to creat a math instance to call it</p><pre><code class="language-text-plain">class SomeClass(){
+	static someStaticProperty = null;
+	constructor(argument){
+		this.property = argument;
+		this.otherPropert = someOtherValue;
+	}
+	someMethod(){
+		// code
+	}
+	static someStaticMethod(){// code}
+}</code></pre>
+    <h6>Singletons</h6>
+    <p>Singletons are classes that only allow one instance allowing you to refer
+      to only one specific instance</p><pre><code class="language-text-plain">class SomeClass(){
+	static instance = null;
+	constructor(argument){
+		if(instance){return instance}
+		instance = this;
+	}
+}</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

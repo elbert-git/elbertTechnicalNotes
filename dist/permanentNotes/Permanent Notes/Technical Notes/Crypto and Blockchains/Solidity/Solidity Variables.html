@@ -1,0 +1,97 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Solidity Variables</h1>
+
+    
+<h2><strong>Solidity Variables</strong></h2>
+    <p><strong>Variable visibility/scoping</strong>
+    </p><pre><code class="language-text-plain">pragma solidity ^0.8.4;
+
+contract BasicContract{
+  address public owner;
+  function SetOwner(address newOwner) public {
+    owner = newOwner;
+  }
+}
+</code></pre>
+    <p>by default variables and functions are private. used only in the class
+      privately. but you can expose them by the <strong>public</strong> keyword.</p>
+    <h3><strong>Ints</strong></h3>
+    <p><strong>unsigned vs normal integers</strong>
+    </p>
+    <p>normal integers are normal. unsigned just mean they can't be negative.
+      it is an always positive number.</p><pre><code class="language-text-plain">uint alwaysPositive = 22254;
+int canBeNegative = -902314;
+</code></pre>
+    <p><strong>integer bits</strong>
+    </p>
+    <p>you can also set how many bits to hold the integer. This is most likely
+      a cost saving measure.</p>
+    <p>by default it ints and uints are 256 bits</p><pre><code class="language-text-plain">int8
+int16
+.
+.
+.
+int256
+
+uint8
+uint16
+.
+.
+.
+uint256
+</code></pre>
+    <h3><strong>Strings</strong></h3>
+    <p>just a normal string.</p><pre><code class="language-text-plain">string basicString = "hello world";
+</code></pre>
+    <h3><strong>Addresses</strong></h3>
+    <p>every ethereum wallet and smart contract has an address.</p>
+    <p>an address is just a hyperlink/reference to a wallet or smart contract
+      in the blockchain</p><pre><code class="language-text-plain">address smartContractOwner = 0xpowie0923sdfg23;
+</code></pre>
+    <h3><strong>Arrays</strong></h3>
+    <p>like c# arrays. just an array that can dynamically resize. but accepts
+      one type of object</p><pre><code class="language-text-plain">int[] numberArray = [1,2,3]
+</code></pre>
+    <h3><strong>Mapping</strong></h3>
+    <p>basically python dictionaries but weirder</p><pre><code class="language-text-plain">mapping(address =&gt; uint) dictionaryOfBalances;
+dictionaryOfBalances[johnAccount] = 222;
+</code></pre>
+    <p>This dict doesn't only hold strings as keys. it can by any data type.
+      just denote what is the key value data types to create a dictionary.</p>
+    <p>then use it like a python dictionary</p>
+    <h3><strong>Structs</strong></h3>
+    <p>basically javascript objects</p>
+    <p>Though most likely not, it's a python dictionary of sorts.</p><pre><code class="language-text-plain">struct Person {
+        string name = "hello";
+        string favouritWoreds[] = ["Fungi", "Moist"];
+    }
+</code></pre>
+    <h3><strong>Events</strong></h3><pre><code class="language-text-plain">event LogDepositMade(address accountAddress, uint amount);
+</code></pre>
+    <p>Make logs that other programs can listen for.</p>
+    <h3><strong>Memory Vs Storage</strong></h3>
+    <p>You can mark a variable as memory or storage. whether it only exists in
+      the run time of the function or persists throughout the life time of the
+      contract.</p>
+    <p>This helps you save on gas fees by denoting what to save and what to keep.</p><pre><code class="language-text-plain">string memory tempString public = "temp";
+string storage permanentString public = "permanent";
+</code></pre>
+    <h3><strong>MSG object</strong></h3>
+    <p>This is is how you identify who is interacting with the smart contract.</p>
+    <p>at the start it will always be the deployer.</p>
+    <p>but other people can also interact with this contract. so when they call
+      the fucntion. the msg object will be associated with them.</p><pre><code class="language-text-plain">address currentUser = msg.sender;
+</code></pre>
+
+  </body>
+
+</html>

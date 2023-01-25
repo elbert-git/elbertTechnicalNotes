@@ -1,0 +1,48 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Git Branching And Merging</h1>
+
+    
+<h2>Branching</h2>
+    <p>One of git's killer features. Allows history versions to branch off and
+      be merged back. allowing different developers to work on stable base and
+      collaborate easier.&nbsp;</p>
+    <h3>Creating a new branch</h3><pre><code class="language-text-plain">&nbsp;git checkout -b "branchName"</code></pre>
+    <h3>Changing to a branch</h3><pre><code class="language-text-plain">git checkout -b "newBranchName"</code></pre>
+    <h3>Deleting Branches</h3><pre><code class="language-text-plain">git branch --delete &lt;branchname&gt;</code></pre>
+    <h3>Renaming branches</h3><pre><code class="language-text-plain">git branch -m &lt;newname&gt;</code></pre>
+    <h3>Listing branches</h3><pre><code class="language-text-plain"># for list of local branches
+git branch
+
+# for list of all branches including in remote
+git branch -a</code></pre>
+    <h2>Merging branches</h2>
+    <p>Merges the history and files of branches into one branch. The command
+      below merges the specified branch into the current branch the console is
+      in</p><pre><code class="language-text-plain">git merge "branchName"</code></pre>
+    <p>After merging just remember to commit and push the changes.</p>
+    <h2><strong>Merge Conflicts</strong></h2>
+    <h3>How to handle it</h3>
+    <ul>
+      <li>Abort merge</li>
+    </ul><pre><code class="language-text-plain">git merge --abort</code></pre>
+    <ul>
+      <li>Understand where the conflict is in.</li>
+      <li>selectively choose what to commit and remove.</li>
+    </ul>
+    <h3>How to avoid it</h3>
+    <ul>
+      <li>Communicate and dont work on the same directory/modules&nbsp;</li>
+    </ul>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

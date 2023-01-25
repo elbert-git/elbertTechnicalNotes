@@ -1,0 +1,95 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Regular Expressions</h1>
+
+    
+<h2>Regular Expressions</h2>
+    <p>A tool for finding patterns within a string</p>
+    <h5><strong>What is it used for?</strong></h5>
+    <p>Used for finding/matching patterns in a string. Most use cases are:</p>
+    <ul>
+      <li>finding patterns in a string</li>
+      <li>validating user input</li>
+    </ul>
+    <h2><strong>Basic Usage</strong></h2><pre><code class="language-text-plain">/someText/</code></pre>
+    <p>The above means find the first match. The you can add additional flags
+      to signify different pattersn</p>
+    <p>like <code>/g</code> to find all matches of inputed text</p><pre><code class="language-text-plain">someText/g</code></pre>
+    <h2><strong>Flags</strong></h2>
+    <p>How to create complex patterns</p>
+    <figure class="table">
+      <table style="border-style:solid;">
+        <thead>
+          <tr>
+            <th style="text-align:center;">Opearators</th>
+            <th style="text-align:center;">explanation</th>
+            <th style="text-align:center;">example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center;">|</td>
+            <td>an ‘or’ operator</td>
+            <td>/textA|textB/</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">()</td>
+            <td>a regex within a regex</td>
+            <td>/(textA|TextB) string/</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">\</td>
+            <td>escape a flag character or signal one</td>
+            <td>/? to say ? or /d to say digit</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">\d</td>
+            <td>digit. use capitals to negate digit</td>
+            <td>/d/d/d/d</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">\w</td>
+            <td>word. use capitals to negate words</td>
+            <td>/w /w /w</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">[]</td>
+            <td>custom range of characters</td>
+            <td>[xyz] will match x, y and z</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">^</td>
+            <td>negate</td>
+            <td>^negate what comes after</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+    <h2>Tools to help with regex</h2>
+    <p><a href="https://www.regexr.com">www.regexr.com</a>
+    </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

@@ -1,0 +1,46 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Firebase</h1>
+
+    
+<h2><strong>-|- Firebase</strong></h2>
+    <h3>In General</h3>
+    <p>A simple catch-all back-end implementation</p>
+    <h3>Source</h3>
+    <p><a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb">NetNinja's firebase 9 tutorial</a>
+    </p>
+    <h2><strong>Installation</strong></h2>
+    <h3>Installing the cli</h3><pre><code class="language-text-plain">npm i firebase-cli
+</code></pre>
+    <h3>Installing firebase</h3><pre><code class="language-text-plain">npm install firebase
+</code></pre>
+    <h2><strong>General Project setup</strong></h2>
+    <p><strong>create project on firebase website</strong>
+    </p>
+    <p>Go to the firebase console website and create a new project</p>
+    <p><strong>get project credentials</strong>
+    </p>
+    <p>Go to the project settings and you will find the project credentials.
+      you will need it to initialised the firebase client</p>
+    <p><strong>initialise firebase app from client</strong>
+    </p>
+    <p>Create firebase.js and put below inside.</p><pre><code class="language-text-plain">import {initializeApp} from 'firebase/app';
+
+const firebaseConfig = {// copy from firebase console website};
+
+initializeApp(firebaseConfig)
+</code></pre>
+    <h3>&nbsp;</h3>
+    <h2><strong>[ ] &nbsp;Firebase rules and security</strong></h2>
+    <p>===================================================================</p>
+  </body>
+
+</html>

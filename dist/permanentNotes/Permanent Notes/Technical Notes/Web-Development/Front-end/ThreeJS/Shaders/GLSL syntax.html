@@ -1,0 +1,44 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>GLSL syntax</h1>
+
+    
+<h2>Variables</h2>
+    <h3>Creating a variable</h3><pre><code class="language-text-plain">{type} varName = value</code></pre>
+    <p>It's statically typed</p>
+    <h3>Data types</h3>
+    <ul>
+      <li>floats</li>
+      <li>integers</li>
+      <li>booleans</li>
+    </ul>
+    <h3>Converting between types</h3><pre><code class="language-text-plain">const int = int(3.23);</code></pre>
+    <h3>Vector types</h3><pre><code class="language-text-plain">vec3 bar = vec3(1.0, 2.0, 3.0);
+vec2 foo = vec2(1.0, 2.0);
+vec4 foo = vec4(1.0, 2.0, 3.0, 4.0);</code></pre>
+    <h2>Functions</h2><pre><code class="language-text-plain">{returnType} someFunc()
+{
+    float a = 1.0;
+    float b = 2.0;
+    return a + b;
+}</code></pre>
+    <p>Just declare the return type and initiate the function like how you woudl</p>
+    <h3>Adding arguments</h3><pre><code class="language-text-plain">float add(float a, float b)
+{
+    return a + b;
+}</code></pre>
+    <h3>built-in functions</h3>
+    <figure class="image">
+      <img src="GLSL%20syntax/image.png">
+    </figure>
+  </body>
+
+</html>

@@ -1,0 +1,67 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Advanced Mongoose Features</h1>
+
+    
+<h2>Advanced Mongoose Features</h2>
+    <p>This is basically going into more detail to more efficiently use monogoose.</p>
+    <h2>Data validation</h2>
+    <p>You can set data validation within the document class/model itself.
+      <a
+      href="Schema%20%20and%20model%20Options.html">see here</a>.&nbsp;</p>
+    <h2>Best practice to edit docs</h2><pre><code class="language-text-plain">let doc = docModel.findById('id');
+// ... do edits
+doc.save()</code></pre>
+    <p>Validations only run on doc.create() and doc.save(). best limit your writing
+      operations to these 2 functions</p>
+    <h2>Populating object IDs</h2>
+    <p>Kinda like joins in other databases. But basically if you have an object
+      id in a schema. you can set it to populate the objects when reading it</p><pre><code class="language-text-plain">const doc = await docModel({'id'}).populate("propName");</code></pre>
+    <h2>Extending model methods</h2>
+    <p>Creates extra helper methods to manage/read data. Do note that you can't
+      use arrow functions here.</p>
+    <h3>Model Methods</h3>
+    <p>This is the basic method that is operated on a document instance. Define
+      this in the file that defines the schema</p><pre><code class="language-text-plain">docSchema.methods.methodName = fucntion (){console.log({some tring with ${this.propertValue}})};</code></pre>
+    <p>call it by</p><pre><code class="language-text-plain">docInstance.methodName();</code></pre>
+    <p>This one is arguably useless. dk how to apply this hahaha. But it's here</p>
+    <h3>Static model methods</h3>
+    <p>like methods, but static methods works on the model</p><pre><code class="language-text-plain">docSchema.statics.methodName = fucntion(){};</code></pre>
+    <p>calll it by</p><pre><code class="language-text-plain">userModel.methodName();</code></pre>
+    <p>This is the most useful one I think. you can create custom searchers like
+      .findByName(name).</p>
+    <h3>Adding a query method</h3>
+    <p>this defines a dot function for querying. It's an extra custom smart filter.</p><pre><code class="language-text-plain">docSchema.query.methodName = function(){};</code></pre>
+    <p>call it by</p><pre><code class="language-text-plain">docModel.find({selector}).methodName()</code></pre>
+    <h3>Adding a virtual property</h3>
+    <p>It's definining a new property derived from the property defined. Like
+      getting bmi from weight and height in a schema.</p><pre><code class="language-text-plain">docSchema.virtual('nameOfProperty').get(function(){
+	return `${this.prop1} and ${this.prop2}`
+});</code></pre>
+    <p>then get it by</p><pre><code class="language-text-plain">docInstance.nameOfProperty</code></pre>
+    <ul>
+      <li>what is this</li>
+      <li>defining a queyrmethod</li>
+      <li>why?</li>
+    </ul>
+    <h2>Middleware</h2>
+    <p>function attachments to pre and post operations. Like if you want to do
+      something before saving/validating for example</p>
+    <p>The most important attachments are before <code>save</code> and <code>update</code>
+    </p><pre><code class="language-text-plain">// defining a pre valdationt
+docSchema.pre('event', function(){});
+// defining a post valdationt
+docSchema.post('event', function(){});</code></pre>
+    <p>Great for updating timestamps for like an ‘lastEditedAt’ propert y.</p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

@@ -1,0 +1,51 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Bash Programming Fundementals</h1>
+
+    
+<h2>The first line of a script</h2>
+    <p>Put this line on top if you are creating a bash script file</p><pre><code class="language-text-plain">#!/usr/bin/env bash // this signals a file is a bash script</code></pre>
+    <h2>Logging</h2><pre><code class="language-text-plain">echo {stuff}</code></pre>
+    <h2>Comments</h2><pre><code class="language-text-plain"># this is a comment</code></pre>
+    <h2>Variables</h2><pre><code class="language-text-plain">Variable={stuff} # note no spaces</code></pre>
+    <h3>Arrays</h3><pre><code class="language-text-plain">someArray=(valA valB valC) </code></pre>
+    <h2>If-statements</h2><pre><code class="language-text-plain">if[ $Name != $USER ]
+then
+	#code
+else
+	#code
+fi</code></pre>
+    <p>You need to terminate if statements with fi</p>
+    <h2>Sleep</h2>
+    <p>Pause the shell for n seconds</p><pre><code class="language-text-plain">sleep 60 # in seconds</code></pre>
+    <h2>Functions</h2>
+    <h5>Create a function</h5><pre><code class="language-text-plain">function fucntionName ()
+{
+    #code 
+    return $1 # use argument 1
+}</code></pre>
+    <p>arguments are referenced by $1, $2 and $3 and so on</p>
+    <h5>Calling a function</h5><pre><code class="language-text-plain">functionName {arg1} {arg2}</code></pre>
+    <h2>Loops</h2>
+    <h3>For Loop&nbsp;</h3><pre><code class="language-text-plain">for i in "${array0[@]}"; do
+    echo "$i"
+done</code></pre>
+    <h4>While loop</h4><pre><code class="language-text-plain">while [ true ]
+do
+    echo "loop body here..."
+    break
+done</code></pre>
+    <h2>Running Shells scripts</h2><pre><code class="language-text-plain">sh {path/to/script}</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

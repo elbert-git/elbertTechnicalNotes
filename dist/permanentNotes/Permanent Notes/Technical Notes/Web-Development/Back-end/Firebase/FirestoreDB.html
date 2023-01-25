@@ -1,0 +1,181 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>FirestoreDB</h1>
+
+    
+<h2><strong>Firestore Database</strong></h2>
+    <p>===================================================================</p>
+    <h3><strong>General intuition</strong></h3>
+    <p>Firebase database implementation.</p>
+    <p><strong>Structure</strong>
+    </p>
+    <p>Firestore is a giant folder for storing jsons. It is structured with collections
+      and documents. Think collections as folders and documents and files.</p>
+    <p><strong>Document ID</strong>
+    </p>
+    <p>every document has an id so that you can grab them</p>
+    <h3>Importing the module</h3>
+    <p>import firestore and get firestore object</p><pre><code class="language-text-plain">// import firestore
+import {getFirestore} from 'firebase/firestore';
+
+// get firestore object
+const db = getFirestore();
+</code></pre>
+    <h3><strong>Basic Usage (CRUD)</strong></h3>
+    <ul>
+      <li>import firestore and get firestore object</li>
+    </ul><pre><code class="language-text-plain">// import firestore
+import {getFirestore} from 'firebase/firestore';
+
+// get firestore object
+const db = getFirestore();
+</code></pre>
+    <ul>
+      <li>reading documents from collection (files from folders)oc</li>
+    </ul><pre><code class="language-text-plain">// imports
+import {getFirestore, collection, getDocs} from 'firebase/firestore';
+
+// get collection reference
+const collectionReference = collection(db, 'collectionName')
+
+// get documents from collection
+getDocs(collectionReference); //returns whole doc json
+
+// better way of getting data
+getDocs(collectionReference).then((snapshot) =&gt; {
+  let finalArray = [];
+  snapshot.docs.forEach((doc) =&gt; {
+    finalArray.push({...doc.data(), id: doc.id});
+  });
+}).catch(err =&gt; {
+  console.log(err);
+});
+</code></pre>
+    <ul>
+      <li>reading a single document</li>
+    </ul><pre><code class="language-text-plain">// import 
+import {getDoc} from 'firebase/firestore';
+
+// get doc reference
+cosnt docReference = doc(db, 'collectionName', {documentId});
+
+// get doc
+let data = getDoc(db, 'collectionName', {docId});
+</code></pre>
+    <ul>
+      <li>adding and deleting documents</li>
+    </ul><pre><code class="language-text-plain">// import 
+import {addDoc} from 'firebase/firestore';
+
+// use add Docs
+addDoc(collectionReference, {dataJson});
+</code></pre>
+    <ul>
+      <li>delete documents</li>
+    </ul><pre><code class="language-text-plain">// import
+import {docRef, deleteDoc} from 'firebase/firestore';
+
+// get doc reference
+cosnt docReference = doc(db, 'collectionName', {documentId});
+
+// delete doc
+deleteDoc(docRef); // keep in mind this is async. 
+</code></pre>
+    <ul>
+      <li>Updating documents</li>
+    </ul><pre><code class="language-text-plain">//import
+import {updateDoc} from 'firebase/firestore';
+
+// get doc reference
+const docReference = doc(db, 'collectionName', {documentId});
+
+// updateDoc
+updateDoc(docRef, {keyToUpdate: newValue});
+</code></pre>
+    <h3><strong>Real-time data listener</strong></h3><pre><code class="language-text-plain">// import onSnapshot
+import {onSnapshot} from 'firebase/firestore';
+
+//create event listener
+onSnapshot(collectionReference).then((snapshot) =&gt; {
+  let finalArray = [];
+  snapshot.docs.forEach((doc) =&gt; {
+    finalArray.push({...doc.data(), id: doc.id});
+  });
+}).catch(err =&gt; {
+  console.log(err);
+});
+</code></pre>
+    <h3><strong>Querying data</strong></h3>
+    <ul>
+      <li>import query() and where()</li>
+    </ul><pre><code class="language-text-plain">//import query and where
+import {query, where} from 'firebase/firestore';
+</code></pre>
+    <ul>
+      <li>querying</li>
+    </ul><pre><code class="language-text-plain">const queryData = query(collectionRef, where("key","comparator","value"));
+
+const queryData = query(collectionRef, where("autho","==","C.S Lewis"));
+</code></pre>
+    <ul>
+      <li>Accessing data from query</li>
+    </ul><pre><code class="language-text-plain">getDocs(queryData).then((snapshot) =&gt; {
+  let finalArray = [];
+  snapshot.docs.forEach((doc) =&gt; {
+    finalArray.push({...doc.data(), id: doc.id});
+  });
+}).catch(err =&gt; {
+  console.log(err);
+});
+</code></pre>
+    <h3><strong>Sorting Data</strong></h3>
+    <ul>
+      <li>Creating an index</li>
+    </ul>
+    <p>You need to create something called an index before you can sort stuff.
+      For now just try the function once then It will give you a an error and
+      a link to create an index automatically. Go to the link and create the
+      index. Wait a few minutes then it should work once the index is enabled.</p>
+    <ul>
+      <li>import orderBy</li>
+    </ul><pre><code class="language-text-plain">// import
+import {orderBy} from 'firebase/firestore';
+</code></pre>
+    <ul>
+      <li>create a query</li>
+    </ul><pre><code class="language-text-plain">const queryData = query(collectionRef, where("key","comparator","value"));
+
+const queryData = query(collectionRef, orderBy('key', 'desc/asc'));
+</code></pre>
+    <ul>
+      <li>read query data</li>
+    </ul><pre><code class="language-text-plain">getDocs(queryData).then((snapshot) =&gt; {
+  let finalArray = [];
+  snapshot.docs.forEach((doc) =&gt; {
+    finalArray.push({...doc.data(), id: doc.id});
+  });
+}).catch(err =&gt; {
+  console.log(err);
+});
+</code></pre>
+    <h3><strong>TimeStamps</strong></h3>
+    <ul>
+      <li>import server timestamp</li>
+    </ul><pre><code class="language-text-plain">import {serverTimestamp} from 'firebase/firestore';
+</code></pre>
+    <ul>
+      <li>use fucntion</li>
+    </ul><pre><code class="language-text-plain">let time = serverTimestamp();
+</code></pre>
+
+  </body>
+
+</html>

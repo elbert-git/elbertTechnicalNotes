@@ -1,0 +1,52 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Materials</h1>
+
+    
+<h2>Materials</h2>
+    <p>Creating materials go in the format of&nbsp;</p><pre><code class="language-text-plain">const material = new THREE.MeshBasicMaterial({
+	property: value
+});
+
+//eg.
+const redMaterial= new THREE.MeshBasicMaterial({color: #FF0000});</code></pre>
+    <p>Just create the material and specify the properties you want</p>
+    <p>To change the material properties simple use the dot notation</p><pre><code class="language-text-plain">redMaterial.color = #00FF00;</code></pre>
+    <h3>The basic material</h3>
+    <p>The simplest material kinda performant and simple to use. Can set colour
+      and texture</p><pre><code class="language-text-plain">const material = new THREE.MeshBasicMaterial()</code></pre>
+    <h3>(PBR) Standard Material</h3>
+    <p>The realistic material. you can set typical your typical pbr channels</p><pre><code class="language-text-plain">const material = new THREE.MeshStandardMaterial()</code></pre>
+    <h3>Matcap</h3>
+    <p>Extremely performant material for shading</p><pre><code class="language-text-plain">const material = new THREE.MeshMatcapMaterial()
+material.matcap = matcapTexture</code></pre>
+    <h3>Common Important material properties</h3>
+    <h5>Wireframe toggle</h5><pre><code class="language-text-plain">material.wireframe = true</code></pre>
+    <h5>opacity</h5><pre><code class="language-text-plain">material.transparent = true
+material.opacity = 0.5</code></pre>
+    <h5>Alpha map</h5><pre><code class="language-text-plain">material.transparent = true
+material.alphaMap = doorAlphaTexture</code></pre>
+    <h5>Backface culling</h5><pre><code class="language-text-plain">material.side = THREE.DoubleSide // turn off backface culling</code></pre>
+    <h2>Custom Shaders</h2>
+    <p>See here for understanding <a href="#root/EkbToIutKsQu/n6iRE2zsKdrw/Pu6uAeIi13W1">shaders </a>in
+      general.</p>
+    <p>To use custom shaders simply use a raw shader material. It's a &nbsp;type
+      of material where you supply your own shader</p><pre><code class="language-text-plain">const material = new THREE.RawShaderMaterial({
+    vertexShader: `shaderStringGoesHere`,
+    fragmentShader: `shaderStringGoesHere`
+})</code></pre>
+    <p>Inside the object properties are where you put the shader materials. You
+      can use backticks to write in the shader contructor. Or import a raw string
+      using vite.&nbsp;</p><pre><code class="language-text-plain">import shaderString from './shader.glsl?raw'</code></pre>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

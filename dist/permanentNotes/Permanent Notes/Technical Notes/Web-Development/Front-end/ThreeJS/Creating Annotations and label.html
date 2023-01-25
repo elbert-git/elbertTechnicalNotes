@@ -1,0 +1,78 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Creating Annotations and labels</h1>
+
+    
+<h2>Creating Annotations</h2>
+    <p>Creating html DOM elements that can appear on top of the canvas tracked
+      to the model in screenspace. It can also hide between models. It works
+      by converting a point into 2d screen space. Also checking they are being
+      occluded by models using raycasts</p>
+    <h2>Setup</h2>
+    <h3>Create the HTML overlay with CSS</h3>
+    <p>Create an overlay layer in html. (css overlay) then in js make sure it
+      can be creating&nbsp;</p>
+    <h3>Create a 3D position Vector object to represent 3d positin</h3><pre><code class="language-text-plain">const pointPos = new THREE.Vector(3,1,3);</code></pre>
+    <h3>Convert to normalized screen space</h3><pre><code class="language-text-plain">const screenPosition = point.position.clone()
+screenPosition.project(camera)</code></pre>
+    <p>Note that you need clone the position vectors because the operation changes
+      the values</p>
+    <h3>Convert to absolute screen space</h3><pre><code class="language-text-plain">const translateX = (screenPosition.x + 0.5) * {canvasWidth}
+const translateY = (-screenPosition.y + 0.5) * {canvasHeight} 
+elDomPoint.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`</code></pre>
+    <p>Goes without saying this operation needs to happen every frame. and use
+      css classes to toggle visibility on and off</p>
+    <h2>Checking visibility</h2>
+    <p>This how to check if they should be occluded by the model</p><pre><code class="language-text-plain">// loop over the points
+for(const point of points)
+    {
+    	// check align screen position
+        const screenPosition = point.position.clone()
+        screenPosition.project(camera)
+
+
+		// shoot raycast
+        raycaster.setFromCamera(screenPosition, camera)
+        const intersects = raycaster.intersectObjects(scene.children, true)
+
+
+		// check raycast
+		// if no intersection, make visible
+        if(intersects.length === 0)
+        {
+            point.element.classList.add('visible')
+        }
+        else // have intersection
+        {
+        	// compare intersect point distance to distance from cam and point
+            const intersectionDistance = intersects[0].distance
+            const pointDistance = point.position.distanceTo(camera.position)
+
+
+			// if intersection is closer, point is occluded
+
+			// make invisible
+            if(intersectionDistance &lt; pointDistance)
+            {
+                point.element.classList.remove('visible')
+            }
+            // else make visible, point is not occluded
+            else
+            {
+                point.element.classList.add('visible')
+            }
+        }
+    }
+</code></pre>
+
+  </body>
+
+</html>
