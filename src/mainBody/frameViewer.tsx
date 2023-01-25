@@ -4,7 +4,7 @@ import PageSwitcher from "../navigation/pageSwitcher";
 const pageSwitcher = new PageSwitcher();
 
 export default function FrameViewer(){
-    const [url, setUrl] = useState<string|undefined>('permanentNotes/Permanent Notes/Technical Notes//General Tech/Regular Expressions.html')
+    const [url, setUrl] = useState<string|undefined>('permanentNotes/Permanent Notes/Technical Notes//Web-Development/Javascript.html')
      
     //connect to page switcher
     pageSwitcher.switch = setUrl;
