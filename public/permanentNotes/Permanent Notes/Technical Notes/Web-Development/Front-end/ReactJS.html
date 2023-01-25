@@ -1,0 +1,55 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>ReactJS</h1>
+
+    <p>topics i want to learn next</p>
+    <p>global state managers like redux</p>
+    <hr>
+    <h2><strong>React-JS</strong></h2>
+    <p>A way to build reactive web UI with components(like prefabs in unity).<strong><img class="image-style-align-right image_resized" style="width:241px;" src="ReactJS/image.png" alt="Handling Events – React"></strong>
+    </p>
+    <p><strong>Basic intuition</strong>
+      <br>A react component is basically a fucntion that return html. You can add
+      js functionality to this html. Allowing code-reusability and scoping</p>
+    <h2><strong>Setup</strong></h2>
+    <p><strong>The old way</strong>
+    </p><pre><code class="language-text-plain">npx create-react-app &lt;name-of-react-app&gt;</code></pre>
+    <p>The above will create a basic react folder with boilerplate</p>
+    <p>Starting a dev server</p><pre><code class="language-text-plain">npm start</code></pre>
+    <p>Building the final deployment files</p><pre><code class="language-text-plain">npm build</code></pre>
+    <p><strong>For the new way use </strong><a href="Vite.html"><strong>vite</strong></a>
+    </p>
+    <h2><strong>Recommended directory structure</strong></h2>
+    <p>Inside the ./src</p>
+    <p>- components: for re-usable single components throughout diff pages
+      <br>- pages: page root and page specific components go here
+      <br>- data: for inputting json data
+      <br>- context: for different context components
+      <br>- hooks: for our custom hooks
+      <br>- utilities: for useful functions. like maybe formatting text</p>
+    <h2><strong>Deploying to github-pages</strong></h2>
+    <p>Tutorial source: <a href="https://www.youtube.com/watch?v=2hM5viLMJp">https://www.youtube.com/watch?v=2hM5viLMJp</a>
+    </p>
+    <p>This a tutorial when you use create-react-app. Follow <a href="Vite.html">this </a>tutorial
+      when you used vite</p>
+    <p><strong>1) install gh-pages</strong>
+    </p><pre><code class="language-text-plain">npm install gh-pages — save-dev</code></pre>
+    <p><strong>2) edit package.json</strong>
+    </p>
+    <p>create homepage string in the top-level json</p><pre><code class="language-text-plain">"homepage": "https://elbert-git.github.io/{ProjectName}/"</code></pre>
+    <p>add scripts</p><pre><code class="language-text-plain">"predeploy": "npm run build",
+"deploy": "gh-pages -d build"</code></pre>
+    <p><strong>3) run deploy</strong>
+    </p><pre><code class="language-text-plain">npm run deploy</code></pre>
+
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>useEffect()</h1>
+
+    
+<h2><strong>useEffect()</strong></h2>
+    <p>Function that will run when something happens. A "side-effect"</p><pre><code class="language-text-plain">useEffect(()=&gt;{
+  // code of func here
+},[])
+</code></pre>
+    <p>It depends on the second argument of the fucntion. the "dependency array".
+      the fucntion runs every time the array changes</p>
+    <p><strong>As an "on Start" fucntion</strong>
+    </p>
+    <p>You can use it as an "on-start" function when the dependency array is
+      empty. Since the empty array will never change the func will only run once</p>
+    <p><strong>Loading async data</strong>
+    </p>
+    <p>you can use useEffect as to fetch data on start</p><pre><code class="language-text-plain">useEffect(()=&gt;{
+  const load = async function(){//load async data}
+  load();
+},[])</code></pre>
+
+  </body>
+
+</html>

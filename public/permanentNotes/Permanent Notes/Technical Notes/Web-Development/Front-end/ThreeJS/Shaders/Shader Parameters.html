@@ -1,0 +1,70 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Shader Parameters</h1>
+
+    
+<h2>Shader parameters</h2>
+    <p>These are the settings and argument you use to create a more versatile
+      shader</p>
+    <h2>Attributes</h2>
+    <p>They are values that change from vertex to vertex. Like uv and position.
+      You define attributes in the threeJS buffer geometry</p><pre><code class="language-text-plain">geometry.setAttribute('a_attributeName', new THREE.BufferAttribute(randoms, 1))</code></pre>
+    <p>we put <code>1</code> as the last argument when it is a float/interger.
+      use 2 and 3 for vec2 and vec3 respectively.</p>
+    <p>Here's how to access the attribute in the shader</p><pre><code class="language-text-plain">attribute float a_attributeName;</code></pre>
+    <h3>Default attributes</h3>
+    <p>There are already default attributes in a ThreeJS geometry. Like:&nbsp;</p>
+    <ul>
+      <li>position</li>
+      <li>uv</li>
+      <li>normal</li>
+    </ul>
+    <h2>Varyings</h2>
+    <p>These parameters are called <code>varying</code> parameters. They are data
+      passed between vertex to fragment shaders.&nbsp;</p>
+    <p>Just define the variable like so</p><pre><code class="language-text-plain">varying vec3 v_varName;</code></pre>
+    <p>Then set the variable value somewhere in the vertex's main function.&nbsp;</p>
+    <p>Then you can refer to variable in the fragment shader by defining it again</p><pre><code class="language-text-plain">// in fragment shader
+varying vec3 v_varName;</code></pre>
+    <h2>Uniforms</h2>
+    <p>Allowing external programs to control shader parameters. First you need
+      to define the interface. below is defining one in js. note they are also
+      consistent vertex to vertex.</p><pre><code class="language-text-plain">// defining uniform interface in js
+const uniformInterface = {
+	u_propName : {
+		type: 'f' // float
+		value: {val} // &lt;- update this value to tweak the shader
+}</code></pre>
+    <p>define the prop when you construct the shader material</p><pre><code class="language-text-plain">&nbsp;const material = new THREE.RawShaderMaterial({
+&nbsp;	uniforms: uniformInterface
+    vertexShader: `shaderStringGoesHere`,
+    fragmentShader: `shaderStringGoesHere`
+})</code></pre>
+    <p>Then echo the same variable name in the shader</p><pre><code class="language-text-plain">uniform mat4 projectionMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 modelMatrix;
+uniform float u_propName
+
+attribute vec3 position;
+
+void main()
+{
+    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    vec4 viewPosition = viewMatrix * modelPosition;
+    vec4 projectedPosition = projectionMatrix * viewPosition;
+    
+    gl_Position = projectedPosition;
+}</code></pre>
+    <h2>&nbsp;</h2>
+
+  </body>
+
+</html>

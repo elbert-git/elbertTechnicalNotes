@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{font-family: 'Roboto Slab', serif;}
+
+/* handle basic color */
+html, body{
+    background-color: black;
+}
+*{color: white}
+
+/* sensible defaults */
+*{padding: 0; margin: 0; box-sizing: 0;}
+
+/* handle images */
+img{width: 100% ;}
+
+
+/* headings */
+h2{ font-size: 3rem;}
+h2 strong{font-size: 3rem;}
+h3{ font-size: 1.5rem;}
+strong{font-size: 1rem;}
+
+/* sensible spacings */
+h1{display:  none;}
+h2,h3,h4, p, img, ul,pre, ol{padding: 0.5rem;}
+ul{padding-left: 2rem;}
+body{padding: 1em}
+
+/* hide images for now */
+img{display: none;}
+
+/* code blocks */
+pre{
+    background-color: rgb(66, 66, 66);
+    outline: rgba(255, 255, 255, 0.726) solid 1px;
+    padding: 1em;
+}
+
+/* styling tables */
+th, td{
+    outline: rgba(255, 255, 255, 0.726) solid 1px;
+    padding: 0.5rem;
+}

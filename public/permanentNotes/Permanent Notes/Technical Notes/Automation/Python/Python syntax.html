@@ -1,0 +1,74 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Python syntax</h1>
+
+    
+<h2>Logging</h2><pre><code class="language-text-plain">print({thingToPrint})</code></pre>
+    <h2>Comments</h2><pre><code class="language-text-plain"># this is comment</code></pre>
+    <h2>Variables</h2><pre><code class="language-text-plain">var = {value} // just like that</code></pre>
+    <h3>data types</h3>
+    <ul>
+      <li>booleans</li>
+      <li>integers</li>
+      <li>floats</li>
+      <li>list (brain-dead array)</li>
+    </ul>
+    <h2>Unique data types</h2>
+    <h3>Dictionary</h3>
+    <p>this is literally a json or javascript object</p><pre><code class="language-text-plain">dict = {
+	"name": {value},
+	"someFunc": funcName
+}</code></pre>
+    <p>note you don't access this by the dot notation you have to <code>dict['propName']</code>
+    </p>
+    <h2>Functions</h2><pre><code class="language-text-plain">def someFunc(args1, args2):
+	return arg1</code></pre>
+    <p>Use indents not curly brackets to make a code block.</p>
+    <h2>Loops</h2>
+    <h3>For</h3><pre><code class="language-text-plain">for i in {array}:
+	# code...</code></pre>
+    <p>this is like a for each array. &nbsp;You can also use <code>len(array)</code> to
+      get an array length to handle indeces.&nbsp;</p><pre><code class="language-text-plain">for i in range(array.length):
+	print(i)</code></pre>
+    <h3>While loops</h3><pre><code class="language-text-plain">while {someBool}:
+	# code</code></pre>
+    <h3>Breaks</h3><pre><code class="language-text-plain">while {someBool}:
+	if {bool}: 
+		break</code></pre>
+    <p><code>break</code> breaks the loops and skips</p>
+    <h2>If-statements</h2><pre><code class="language-text-plain">if {someBool}:
+	# code
+elif {someBool}:
+	# code
+else:
+	# some code</code></pre>
+    <h2>Switch statements</h2><pre><code class="language-text-plain">match term:
+
+    case pattern-1:
+
+         action-1
+
+    case pattern-2:
+
+         action-2
+
+    case pattern-3:
+
+         action-3
+
+    case _:
+
+        action-default</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>
