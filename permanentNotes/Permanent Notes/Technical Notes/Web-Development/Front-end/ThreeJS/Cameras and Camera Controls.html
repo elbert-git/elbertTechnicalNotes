@@ -1,0 +1,53 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Cameras and Camera Controls</h1>
+
+    
+<h2>Camera types</h2>
+    <p>There a lots of them but the mains ones you will use are:</p>
+    <ul>
+      <li>Perspective camera&nbsp;</li>
+      <li>Orthographic</li>
+    </ul>
+    <p>But there are more like</p>
+    <ul>
+      <li>Array camera (splitscreen views)</li>
+      <li>StereoCamera (3D eyes)</li>
+      <li>CubeCamera (HDRI Capture)</li>
+    </ul>
+    <h3>Creating an Orthographic Camera</h3>
+    <p>just supply the top,bottom,left,right limits to capture the near and far
+      clip planes</p><pre><code class="language-text-plain">const camera = new THREE.OrthographicCamera( 
+	width / - 2,
+	width / 2,
+	height / 2,
+	height / - 2,
+	1,
+	1000 );
+scene.add( camera );</code></pre>
+    <h2>Camera Controls</h2>
+    <p>You obviously can just write your own Camera controller logic in the update.
+      But there are some classes that already did the work for you</p>
+    <ul>
+      <li>Fly (flying first person)</li>
+      <li>DeviceOrientationControls(Phone gyro)</li>
+      <li>Firstperson(first personl)</li>
+      <li>pointerlock(keeps mouse centered but sends mousemove events to camera)</li>
+      <li>Orbit control</li>
+      <li>trackball</li>
+    </ul>
+    <h2>Common methods</h2>
+    <h3>Camera.lookAt()</h3>
+    <p>Not unique to cameras but applies to all object3Ds</p><pre><code class="language-text-plain">camera.lookAt({vec3})</code></pre>
+    <p>Aims the forwardVector to the vector 3</p>
+  </body>
+
+</html>

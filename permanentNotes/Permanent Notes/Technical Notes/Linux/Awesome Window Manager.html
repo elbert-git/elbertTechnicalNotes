@@ -1,0 +1,31 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Awesome Window Manager</h1>
+
+    <p>
+      <img src="Awesome%20Window%20Manager/awesome-logo.svg" alt="awesome-logo">
+    </p>
+    <h2><strong>Awesome Window Manager</strong></h2>
+    <p>It's an easy to configure window manger</p>
+    <h2><strong>Installation</strong></h2><pre><code class="language-text-plain">sudo pacman -S awesome</code></pre>
+    <h2><strong>Config and theme file setup</strong></h2>
+    <p><strong>Copying the config file.&nbsp;</strong>
+    </p>
+    <p>See also <a href="Awesome%20Window%20Manager/Sources/From%20awesome/Understanding%20the%20default%20conf.html">‘understanding the awm config file’</a> But
+      honestly you can probably just search the comments and figure out what
+      you need to change</p><pre><code class="language-text-plain">cp /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua</code></pre>
+    <p><strong>Copying the theme file.&nbsp;</strong>
+    </p><pre><code class="language-text-plain">&nbsp;cp ~/.config/awesome/mytheme.lua ~/.config/awesome/theme.lua</code></pre>
+    <p>Remember to connect the theme file in the rc.lua</p><pre><code class="language-text-plain">beautiful.init('./path/to/theme.lua')</code></pre>
+
+  </body>
+
+</html>

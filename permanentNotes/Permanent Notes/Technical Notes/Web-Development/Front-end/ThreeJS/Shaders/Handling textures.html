@@ -1,0 +1,58 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Handling textures</h1>
+
+    <ul>
+      <li>dfload textures</li>
+      <li>pass in as a shader attribute</li>
+      <li>pass uv data from vertex to fragment</li>
+      <li>using &nbsp;2d texture sampler</li>
+    </ul>
+    <h2>Using Texture in shaders</h2>
+    <p>Load the texture in threeJS</p><pre><code class="language-text-plain">const texture = textureLoader.load('path/to/texture')</code></pre>
+    <p>Pass the texture into the shader as an attribute</p><pre><code class="language-text-plain">const material = new THREE.RawShaderMaterial({
+    // ...
+    uniforms:
+    {
+        // ...
+        uTexture: { value: flagTexture }
+    }
+})</code></pre>
+    <p>Pipe the threejs UV data to vertex, then to fragment</p><pre><code class="language-text-plain">// access uv from threejs
+attribute vec2 uv;
+
+
+// create varying var fro fragment
+varying vec2 vUv;
+
+void main()
+{
+    vUv = uv; // set the varying value to pass down
+}</code></pre>
+    <p>then now you can sample the texture on the surface</p><pre><code class="language-text-plain">precision mediump float; // presicion set
+
+uniform vec3 uColor;
+uniform sampler2D uTexture; // get sampler function from threeejs
+
+varying vec2 vUv;
+
+void main()
+{
+    vec4 textureColor = texture2D(uTexture, vUv);
+    gl_FragColor = textureColor;
+}</code></pre>
+    <p>Note that the sampler returns a vec4. the rgba. you can edit it as you
+      need to before you return the gl_FragColor.</p>
+    <p>
+      <br>&nbsp;</p>
+  </body>
+
+</html>

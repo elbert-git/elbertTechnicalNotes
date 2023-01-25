@@ -1,0 +1,70 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Typescript</h1>
+
+    
+<h2><strong>TypeScript</strong></h2>
+    <p>Basically Javascript with types. It's a variant of the language. Removing
+      any unknown variables and only allows them to be of one type</p>
+    <p><strong>Why?</strong>
+    </p>
+    <p>Better intellisense(does a lot of the documentation legwork) and catches
+      dumb bugs more often.</p>
+    <h2><strong>Installation and setup</strong></h2>
+    <p>After npm init</p><pre><code class="language-text-plain">npm install typescript // or -g to globally install</code></pre>
+    <p>then creating the config file</p><pre><code class="language-text-plain">tsc --init</code></pre>
+    <p>in the config, most common configs are:</p>
+    <ul>
+      <li>rootDir: ./src</li>
+      <li>outDir: ./dist</li>
+      <li>removeComments: true</li>
+      <li>noEmitOnError: true</li>
+      <li>watch: true</li>
+    </ul>
+    <p>Then simply type tsc to start watching the src</p><pre><code class="language-text-plain">tsc</code></pre>
+    <h2><strong>Basics</strong></h2>
+    <p>Typecasting a variable</p><pre><code class="language-text-plain">let varName:typeName = {value};
+let array:Array&lt;typeof&gt; = [a, b, c];</code></pre>
+    <p>Allowing any type</p><pre><code class="language-text-plain">let varName:any = {anyTypeOfValue};</code></pre>
+    <p>You can also infer types</p><pre><code class="language-text-plain">let num = 1; // will automically cast it as number</code></pre>
+    <p>That's pretty much it. It just allows you to strictly typecast variables</p>
+    <h2><strong>Functions in typescript</strong></h2>
+    <p>Typecasting return variables</p><pre><code class="language-text-plain">function GetNumber():number{
+  // code that will return a number
+}
+
+function ThisWillReturnNone():void{
+  // code that will not return any value
+}</code></pre>
+    <p>Typecasting function arguments</p><pre><code class="language-text-plain">let someFunc = function (i: number): number { return i * i; }</code></pre>
+    <h2><strong>Creating 'interfaces'</strong></h2>
+    <p>Creates an object with known properties types and slots</p><pre><code class="language-text-plain">interface Person {
+  name: string;
+  // Optional properties, marked with a "?"
+  age?: number;
+  // And of course functions
+  move(): void;
+} </code></pre>
+    <h2>Handling nulls</h2>
+    <p>Sometimes you will want typescript to chill and not freak out at a possible
+      null. You can use the <code>!</code> operator</p><pre><code class="language-text-plain">const result:SpecificType = FuncThatCanReturnNull()!;</code></pre>
+    <p>you do need to manually check for nulls yourself then</p>
+    <p>source for more null handling: https://www.technicalfeeder.com/2021/07/efficient-null-handling-in-typescript/</p>
+    <h2>Using Typescript in various libraries</h2>
+    <ul>
+      <li><a href="../Front-end/ReactJS/React%20and%20Typescript.html">React</a>
+      </li>
+    </ul>
+    <h3>&nbsp;</h3>
+
+  </body>
+
+</html>

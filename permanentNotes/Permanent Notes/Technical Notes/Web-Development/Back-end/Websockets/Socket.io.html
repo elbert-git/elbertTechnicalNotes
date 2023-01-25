@@ -1,0 +1,65 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Socket.io</h1>
+
+    
+<h2>Socket.io</h2>
+    <p>A more robust and scalable library for webhooks. It's all still events
+      based</p>
+    <h3>Front-end</h3>
+    <p>You can import via cdn link or bundle it.&nbsp;</p>
+    <p>cdn link: <code>&lt;script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"&gt;&lt;/script&gt;</code>
+    </p>
+    <p>The import will give you a global reference to the <code>io()</code> function
+      used to connect to websocket servers</p><pre><code class="language-text-plain">    &lt;script&gt;
+    	//connect to web socket server
+        const socket = io('ws://localhost:8079');
+        
+        //on message received
+        socket.on('message', (text)=&gt;{
+            console.log("test")
+            const el = document.createElement('li');
+            el.innerHTML = text;
+            document.querySelector('ul').appendChild(el);
+        })
+
+		//emitting a message to socket server
+        socket.emit('message' ,"hello");
+    &lt;/script&gt;</code></pre>
+    <h3>Back-end</h3>
+    <p>Start a node project and install <code>socket.io</code>
+    </p><pre><code class="language-text-plain">//start http server
+const server = require('http').createServer();
+
+//start web socket io
+const io = require('socket.io')(server, {
+    cors: {origin: "*"}
+});
+
+//on connection created callback
+io.on('connection', (socket)=&gt;{
+    console.log('user connected');
+    // io.emit('message', `${socket.id.substr(0,2)} said ${message}`)
+    socket.on('message', (message)=&gt;{
+        console.log(message);
+        //on message, emit the message to rest of everyone
+        io.emit('message', `${socket.id.substr(0,2)} said ${message}`);
+    })
+})
+
+//start server listening
+server.listen(8080, ()=&gt;{
+    console.log('server started')
+})&nbsp;</code></pre>
+
+  </body>
+
+</html>

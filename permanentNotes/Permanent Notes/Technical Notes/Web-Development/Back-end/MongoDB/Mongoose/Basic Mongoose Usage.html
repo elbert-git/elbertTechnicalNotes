@@ -1,0 +1,81 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Basic Mongoose Usage</h1>
+
+    
+<h2>Basic Mongoose Usage</h2>
+    <p>Mongoose get complicated. So here is the basic fucntions</p>
+    <h2>Registering models and schemas</h2>
+    <h5>Creating a schema</h5>
+    <p>Best to have one schema as one js file</p><pre><code class="language-text-plain">const mongoose = ('mongoose');
+
+const someSchema = mongoose.Schema({
+	//propName: dataype
+	name: Sting,
+	age: Number
+});</code></pre>
+    <p>See the datatypes you can use <a href="Schema%20%20and%20model%20Options.html">here</a>
+    </p>
+    <h5>Creating a model</h5><pre><code class="language-text-plain">module.exports = mongoose.model('schemaName', someSchemaVar);</code></pre>
+    <p>Remember to export the model. This is what you inherit in other files
+      to interact with the documents</p>
+    <h2>Creating document instances</h2>
+    <p>Below will create a local doc instance not saved to the database</p><pre><code class="language-text-plain">// import model class
+const DocModel = require('./docModel');
+...
+// create doc
+const doc = new DocModel({prop:value...});</code></pre>
+    <h2>Saving Documents</h2>
+    <p>This will save the doc to the db</p><pre><code class="language-text-plain">doc.save() // this is an async func</code></pre>
+    <h2>Creating documents</h2>
+    <p>Just a shorter way of doing the above 2 headings with oneline</p><pre><code class="language-text-plain">doc.create({propName:value...}) // async </code></pre>
+    <h2>Editing document instances</h2>
+    <p>just edit the doc like an object</p><pre><code class="language-text-plain">doc.prop = value;</code></pre>
+    <p>then call save(). This will update the db copy</p><pre><code class="language-text-plain">doc.save() </code></pre>
+    <h2>Querying data</h2>
+    <h3>find()</h3>
+    <p>use find(). <a href="../MongoSH/Selecting%20Data.html">same selector syntax as mongoSH</a>
+    </p><pre><code class="language-text-plain">docModel.find({selector});</code></pre>
+    <h5>Selection dot functions</h5>
+    <p>Lot's of people think the selector syntax is very confusing in mongoDB.
+      So mongoose has as simpler syntax. Basically chaining fucntions that acts
+      as filters</p><pre><code class="language-text-plain">docModel.find({name: 'John'}).where("age").gt("12).where("name").equals("john");</code></pre>
+    <p>List of dot methods:</p>
+    <ul>
+      <li><code>.where()</code>
+        <ul>
+          <li>used in conjunction with: <code>.lt .gt .lte .gte .equals</code>
+          </li>
+        </ul>
+      </li>
+      <li><code>.limit()</code>
+        <ul>
+          <li>limits options</li>
+        </ul>
+      </li>
+      <li><code>.select()</code>
+        <ul>
+          <li>only returns properties mentioned in arguments</li>
+        </ul>
+      </li>
+    </ul>
+    <h3>&nbsp;findById()</h3><pre><code class="language-text-plain">docModel.findById('id');</code></pre>
+    <h3>exists()</h3>
+    <p>check if selection exists. returns bool</p><pre><code class="language-text-plain">docModel.exists({selection});</code></pre>
+    <h2>Deleting data</h2><pre><code class="language-text-plain">docModel.deleteOne({selector}); // for first match
+docModel.deleteMany({selector}); // for all matches</code></pre>
+    <h2>Advanced Usage</h2>
+    <p>See here <a href="Advanced%20Mongoose%20Features.html">more advanced usage</a>
+    </p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

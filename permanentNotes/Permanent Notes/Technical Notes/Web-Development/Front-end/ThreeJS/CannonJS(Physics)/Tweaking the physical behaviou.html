@@ -1,0 +1,44 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Tweaking the physical behaviours</h1>
+
+    
+<h2>Damping</h2>
+    <p>Simulating air resitance/drag. Can also be water if you need it</p><pre><code class="language-text-plain">body.linearDamping = {float} // for position damping
+body.angularDamping = {float} // for rotation damping</code></pre>
+    <h2>Physics Materials</h2>
+    <p>Set show 2 objects interact with one another. You can tweaks settings
+      like bounce and friction&nbsp;</p>
+    <h3>How it works.</h3>
+    <p>Every object will have a material. You don't define the interaction on
+      a material level. You define interaction between 2 materials.</p>
+    <h3>Creating a material</h3><pre><code class="language-text-plain">const physicsMaterial = new CANNON.Material();
+
+// assign material at body creation
+const body = new Cannon.Body({
+	shape: new Cannon.Plane(),
+	material: physicsMaterial
+})</code></pre>
+    <h3>Defining material contact interactions</h3><pre><code class="language-text-plain">// define contact behaviour
+const contactMaterial = new CANNON.ContactMaterial(mat1, mat2, {
+	friction: {value}
+	restitution: {value} // this is bounce
+})
+
+// add to world
+world.addContactMaterial(contactMaterial);</code></pre>
+    <h2>Detecting Collision events</h2>
+    <p>Simply add an event listener and provide a callback</p><pre><code class="language-text-plain">b2.addEventListener("collide", function(e){ console.log("sphere collided"); } );</code></pre>
+    <p>to have a collide only rigid body</p><pre><code class="language-text-plain">b2.collisionResponse = 0; // no impact on other bodys</code></pre>
+
+  </body>
+
+</html>

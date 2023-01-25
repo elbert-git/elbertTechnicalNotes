@@ -1,0 +1,66 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Understanding Vertex Shaders</h1>
+
+    
+<h2>Vertex Shaders</h2>
+    <p>These help convert 3d vertex positions into 2D screen coordinates. Taking
+      into consideration the model geometry, transforms and camera parameters.&nbsp;</p>
+    <h3>The <code>gl_Position</code></h3>
+    <p>In threeJS all vertex shader does is set the gl_Position. the variable
+      that controls the vertex positions of the geometry.</p>
+    <h2>The vertex boiler plate</h2><pre><code class="language-text-plain">uniform mat4 projectionMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 modelMatrix;
+
+attribute vec3 position;
+
+void main()
+{
+    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    vec4 viewPosition = viewMatrix * modelPosition;
+    vec4 projectedPosition = projectionMatrix * viewPosition;
+    
+    gl_Position = projectedPosition;
+}</code></pre>
+    <h2>Accessing external values</h2><pre><code class="language-text-plain">uniform mat4 projectionMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 modelMatrix;
+
+attribute vec3 position;</code></pre>
+    <p>these are how you declare inputs into the program from threeJS. uniforms
+      are the things that are consistent throughout the model. Atttributes are
+      things that change from vertex to vertex</p>
+    <h2>The main function</h2>
+    <p>This is the programs main entry point. In the boilerplate it's simply
+      placing the mesh as is with it's transform. this is done by calculating
+      the model position then the view positionand the final projected 2D posiiton.
+      Then we assign the variable to final gl_position. gl position is final
+      2D attribute the render uses.&nbsp;</p>
+    <h2>Crazy sine wave</h2><pre><code class="language-text-plain">modelPosition.z += sin(modelPosition.x * 10.0) * 0.1;</code></pre>
+    <p>if you wanna do anything. on the local model level. You can do it in the
+      model position level. the above creates a sine wave based on the x axis</p>
+    <h2>&nbsp;</h2>
+    <h2>&nbsp;</h2>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

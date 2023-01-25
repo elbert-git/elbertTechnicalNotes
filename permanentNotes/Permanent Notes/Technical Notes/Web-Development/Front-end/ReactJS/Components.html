@@ -1,0 +1,107 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Components</h1>
+
+    
+<h2><strong>The Component</strong></h2>
+    <p>Simply create fucntion that return html.</p><pre><code class="language-text-plain">export default function ComponentName(){
+  return(
+    &lt;div&gt;
+      &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+    <p>Then you import that function where you need that component in the code.</p><pre><code class="language-text-plain">import ComponentName from  './src/componentName.js';
+//...
+return(
+  &lt;ComponentName/&gt;
+)
+</code></pre>
+    <h2><strong>Props</strong></h2>
+    <p>Allowing attributes to be passed to the component changing how it renders</p><pre><code class="language-text-plain">export default function ComponentName(propObjectName) {
+  return (
+    &lt;div&gt;
+      {/*this is how you pass prop values to render*/}
+      here is the prop {prop.propName} 
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+    <p>Then you set props by creating html attributes of the same name</p><pre><code class="language-text-plain">&lt;ComponentName propName=value /&gt;
+</code></pre>
+    <p>A common shorthand for this is putting an object into fucntion argument</p><pre><code class="language-text-plain">export default function componentName({propName}) {
+  return (
+    &lt;div&gt;
+      {/*this is how you pass prop values to render*/}
+      here is the prop {propName} 
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+    <p><strong>Passing children components</strong>
+    </p><pre><code class="language-text-plain">export default function componentName({childen}) {
+  return (
+    &lt;div&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+    <h2><strong>Styling components</strong></h2>
+    <p>To use css classes like usual</p><pre><code class="language-text-plain">&lt;div className="classA classB classC"&gt;&lt;/div&gt;
+</code></pre>
+    <p>But you can also create styles in the app. Not recommended though, heard
+      it's not performant</p><pre><code class="language-text-plain">export default function componentName({childen}) {
+  const styleObject = {backgroundColor: "red"}
+  return (
+    &lt;div style={{styleObject}}&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+    <h2><strong>Rendering loops</strong></h2>
+    <p>you can loop over a json/array to display a lot of data.</p>
+    <p><strong>the map function</strong>
+    </p><pre><code class="language-text-plain">return(
+ array.map(obj =&gt; {
+ return &lt;div attribute=obj.value propName=obj.value key=uniqueid/&gt;};
+)</code></pre>
+    <p>See a clear explanation of the map function <a href="../../Javascript/Array%20Methods.html">here</a>
+    </p>
+    <p><strong>unique keys</strong>
+    </p>
+    <p>when using the map array. react needs unique id to all the elements. this
+      lets react know which element has changed so that it can only render that
+      element. it also just prevents weird bugs.</p>
+    <p>simplest way is to just add an index to the arrray object. but this isnt
+      ideal for many situations</p>
+    <p>you can use the <strong>uuid package</strong> from npm to easily solve this
+      issue</p>
+    <p><strong>first install uuid</strong>
+    </p><pre><code class="language-text-plain">npm install uuid --save-dev
+</code></pre>
+    <p><strong>import to the file that creates desired array to be mapped over.</strong>
+    </p>
+    <p>this will allow you to create new unique ids with a simple func</p><pre><code class="language-text-plain">import React from 'react';
+import ReactDom from 'react-dom';
+import { v4 as uuidv4 } from 'uuid';
+
+return(
+ array.map(obj =&gt; {
+ return &lt;div attribute=obj.value propName=obj.value key={uuidv4()}/&gt;};
+)
+</code></pre>
+
+  </body>
+
+</html>

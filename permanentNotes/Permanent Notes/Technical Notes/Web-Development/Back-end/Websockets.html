@@ -1,0 +1,57 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Websockets</h1>
+
+    
+<h2>Websockets</h2>
+    <p>They are http connections that are constanty alive. allows constant two-way
+      unpromtped messages and can store state. Great for real-time communication
+      application like multiplayer games and chat apps.</p>
+    <h2>Basic websockets</h2>
+    <h3>Back-End</h3>
+    <p>The backed is a websocket server. The code boils down to a bunch of callbacks
+      on different events.</p>
+    <p>Just start a simple node project and &nbsp;<code>npm install ws</code>
+    </p><pre><code class="language-text-plain">console.clear()
+
+//import server
+const WebSocket = require('ws');
+//start server instance
+const server = new WebSocket.Server({port:'8080'});
+
+// socket.io is events based
+///create on connection event callback
+server.on('connection', (socket)=&gt;{
+    //on connect listen for a message and echo that back in a callback function
+    console.log('a connection is established');
+    socket.on('message', (message)=&gt;{
+        socket.send(`Roger that ${message}`);
+    })
+})</code></pre>
+    <h3>Front-End</h3>
+    <p>In the front end there is a built in class called websockets. to connect
+      to websocket servers. Same principle as the back-end. A bunch of callbacks
+      for event.s</p><pre><code class="language-text-plain">&lt;body&gt;
+   &lt;h1&gt;hello&lt;/h1&gt; 
+   &lt;script&gt;
+       const socket = new WebSocket('ws://localhost:8080')
+       socket.onopen = ()=&gt;{
+           socket.onmessage = ({data})=&gt;{console.log(data)}
+           socket.send("what up");
+       }
+   &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+    <hr>
+    <p>To see a much more scalable and robust implementation, use <a href="Websockets/Socket.io.html">socket.io</a>
+    </p>
+  </body>
+
+</html>

@@ -1,0 +1,28 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Solidity Events</h1>
+
+    
+<h2><strong>Events</strong></h2>
+    <p>A way to to set up a signal that other contracts, objects, fucntions etc.
+      can subscribe to. But can also function like a console.log into the blockchain
+      log</p>
+    <h5>Creating an event</h5><pre><code class="language-text-plain">event EventName(dataType varName, datatype varname);
+</code></pre>
+    <p>they look like structs. this is so that events can also carry data to
+      further describe the event.</p>
+    <h5>Emitting an event</h5><pre><code class="language-text-plain">emit eventName(argName, argName);
+</code></pre>
+    <p>just call emit, then event name followed by the variables to make up that
+      data.</p>
+  </body>
+
+</html>

@@ -1,0 +1,93 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>HTTP</h1>
+
+    
+<h2><strong>HTTP: Hyper Text Transfer Protocol</strong></h2>
+    <p>The backbone protocol of the internet. A standard way of communicating.
+      Using the client server model. Your personal computers are clients and
+      the others are servers. Servers can listen http <u>requests</u> and respond
+      with http responses.&nbsp;</p>
+    <h2><strong>Parts of an HTTP request</strong></h2>
+    <figure class="table">
+      <table>
+        <tbody>
+          <tr>
+            <td>Header</td>
+            <td><strong>Request line</strong>: the verb and url ()
+              <br><strong>additional request headers:</strong> usually parameters about how
+              the request is sent</td>
+          </tr>
+          <tr>
+            <td>blank line</td>
+            <td>Just to help separate the parts</td>
+          </tr>
+          <tr>
+            <td>Body</td>
+            <td>
+              <p>message contents. Most often used by the http content</p>
+              <p><span style="background-color:hsl(60, 75%, 60%);">This is a json</span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+    <h2><strong>Status Codes</strong></h2>
+    <p>&nbsp;After pinging a request to server, the server will respond with
+      http response. in the header is a status code indicating the state of the
+      request. Usually indicating something about the status of the request.
+      Below are the some of common status codes.&nbsp;</p>
+    <p>Generally the codes are grouped into categories of responses</p>
+    <figure
+    class="table">
+      <table>
+        <tbody>
+          <tr>
+            <td>From 100-199</td>
+            <td>information &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp;</td>
+          </tr>
+          <tr>
+            <td>200-299</td>
+            <td>Successful&nbsp;</td>
+          </tr>
+          <tr>
+            <td>300-399</td>
+            <td>redirection &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</td>
+          </tr>
+          <tr>
+            <td>400-499</td>
+            <td>Client error</td>
+          </tr>
+          <tr>
+            <td>500-599</td>
+            <td>server errors</td>
+          </tr>
+        </tbody>
+      </table>
+      </figure>
+      <p>Some common response codes are</p>
+      <ul>
+        <li>200: OK</li>
+        <li>404: resource not found</li>
+      </ul>
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Shadows</h1>
+
+    
+<h2>Activating shadows</h2>
+    <h3>In renderer</h3><pre><code class="language-text-plain">renderer.shadowMap.enabled = true</code></pre>
+    <h3>Per object</h3>
+    <p>Due to performance reasons. Object shadows are all off by default. you
+      need to enabled them on a per object basis.&nbsp;</p><pre><code class="language-text-plain">meshObj1.castShadow = true
+
+// ...
+
+meshObj3receiveShadow = true</code></pre>
+    <h2>Shadow &nbsp;Settings</h2>
+    <h3>Map size</h3>
+    <p>The size of the shadow renders overlayed on objects</p><pre><code class="language-text-plain">directionalLight.shadow.mapSize.width = 1024
+
+directionalLight.shadow.mapSize.height = 1024</code></pre>
+    <p>Make sure they are powers of 2 to enable mipmaps.</p>
+    <h3>Near and far limits</h3>
+    <p>You can limit the range of the shadows relative to the light source</p><pre><code class="language-text-plain">directionalLight.shadow.camera.near = 1
+
+directionalLight.shadow.camera.far = 6</code></pre>
+    <h3>Blur radius</h3>
+    <p>You can make the shadows blurred&nbsp;</p><pre><code class="language-text-plain">directionalLight.shadow.radius = 10</code></pre>
+    <p>&nbsp;</p>
+  </body>
+
+</html>

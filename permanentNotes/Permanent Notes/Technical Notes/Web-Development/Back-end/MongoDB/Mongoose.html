@@ -1,0 +1,61 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>Mongoose</h1>
+
+    
+<h2>MongooseJS<img class="image-style-align-right image_resized" style="width:21.25%;" src="Mongoose/7552965.png"></h2>
+    <p>A wrapper around mongoSH shell &nbsp;to interact with database.</p>
+    <h3>Installation</h3><pre><code class="language-text-plain">npm i -D mongoose</code></pre>
+    <h3>Main concepts</h3>
+    <figure class="table">
+      <table>
+        <tbody>
+          <tr>
+            <td>Schemas</td>
+            <td>Data structure of a document. defines what property exists</td>
+          </tr>
+          <tr>
+            <td>models</td>
+            <td>A javascipt class that wraps around the schema. this is what javascript
+              interacts with.&nbsp;</td>
+          </tr>
+          <tr>
+            <td>queries</td>
+            <td>querying documents from mongoose</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+    <h2>Connecting a mongoDB</h2><pre><code class="language-text-plain">const mongoose = require('mongoose');
+mongoose.connect(
+	"url/to/db",
+ 	()=&gt;{console.log('this runs if success)},
+ 	()=&gt;{console.log('this runs if failure')}
+);</code></pre>
+    <h2>Why Schemas and models</h2>
+    <p>Schemas are document structures. models extend the read and write capability
+      with extra fucntions. like data validation and easier data reads.&nbsp;</p>
+    <h2>Basic use of mongoose</h2>
+    <p>Mongoose get's complicated but the complication just makes it more convenient.
+      But you can use like a basic read and write. <a href="Mongoose/Basic%20Mongoose%20Usage.html">See here for more&nbsp;</a>
+    </p>
+    <h2>Advanced functions</h2>
+    <p>Mongoose and create fucntions that extend the docSchema. Like data validation,
+      methods and virtual virtrualware. <a href="Mongoose/Advanced%20Mongoose%20Features.html">See here for more info</a>
+    </p>
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="#root/1iecD0eiIJE0/FIpWjsdCG9wE/RQ9S8AFyzgPI/bRLTcMHdC21M">mongoos crash course</a>
+      </li>
+    </ul>
+  </body>
+
+</html>

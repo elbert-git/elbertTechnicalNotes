@@ -1,0 +1,63 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+  </head>
+  
+  <body class="ck-content">
+     <h1>useRef()</h1>
+
+    
+<h2><strong>useRef()</strong></h2>
+    <p>this is how you reference other elements in the dom
+      <br>in html you would directly reference from the dom.
+      <br>but here you need to use useRef()</p>
+    <h5>how to use</h5><pre><code class="language-text-plain">import React from 'react';
+import ReactDom from 'react-dom';
+import {useRef} from 'react';
+
+export default function customReactComponent (prop) {
+  const varForElementName = useRef();
+
+  return (
+    &lt;div ref={varForElementName}&gt;
+      here is the prop {prop.propName} 
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+    <p>you import useRef from react</p>
+    <p>create a var and set it to useRef()</p>
+    <p>in the element you want it to reference</p>
+    <p>give an attribute ref with the value of the variable name</p>
+    <p><strong>useRef() through children</strong>
+    </p><pre><code class="language-text-plain">import React from 'react';
+import ReactDom from 'react-dom';
+import {useRef} from 'react';
+
+export default function customReactComponent (prop) {
+  const varForElementName = useRef();
+
+  return (
+    &lt;div &gt;
+      &lt;parent refHook={varForElementName}/&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre><pre><code class="language-text-plain">import React from 'react';
+import ReactDom from 'react-dom';
+import {useRef} from 'react';
+
+export default function customReactComponent (prop) {
+  return (
+    &lt;div ref={prop.refHook}&gt;&lt;/div&gt;
+  )
+}
+</code></pre>
+    <p>&nbsp;</p>
+  </body>
+
+</html>
