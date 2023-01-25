@@ -10,6 +10,10 @@ html, body{
 /* sensible defaults */
 *{padding: 0; margin: 0; box-sizing: 0;}
 
+code overflow fix
+code{overflow-wrap: break-word;}
+pre{overflow-x: scroll;}
+
 /* handle images */
 img{width: 100% ;}
 
