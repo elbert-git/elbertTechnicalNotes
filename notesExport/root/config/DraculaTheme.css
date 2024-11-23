@@ -1,0 +1,141 @@
+/*
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/custom/fonts/raleway.woff2') format('woff2');
+}
+*/
+
+:root {
+    /*
+    --main-font-family: 'Raleway' !important;
+    --main-font-size: normal;
+    --tree-font-family: inherit;
+    --tree-font-size: normal;
+    --detail-font-family: inherit;
+    --detail-font-size: normal;
+    --detail-text-font-family: 'Garamond' !important;
+    */
+
+    --main-background-color: #282a36;
+    --main-text-color: #f8f8f2;
+    --main-border-color: #6272a4;
+    --accented-background-color: #6272a4;
+    --more-accented-background-color: #6272a4;
+    --header-background-color: red;
+    --button-background-color: #00000000;
+    --button-disabled-background-color: red;
+    --button-border-color: #6272a4;
+    --button-text-color: #f8f8f2;
+    --button-border-radius: 2px;
+    --primary-button-background-color: red;
+    --primary-button-text-color: #f8f8f2;
+    --primary-button-border-color: red;
+    --muted-text-color: #8be9fd;
+    --input-text-color: #50fa7b;
+    --input-background-color: #404552;
+    --hover-item-text-color: white;
+    --hover-item-background-color: #44475a;
+    --active-item-text-color: #8be9fd;
+    --active-item-background-color: #6272a4;
+    --menu-text-color: #f8f8f2;
+    --menu-background-color: #383C4A;
+    --tooltip-background-color: #6272a4;
+    --link-color: #8be9fd;
+    --modal-background-color: #6272a4;
+    --modal-backdrop-color: #6272a4;
+    --scrollbar-border-color: #00000000;
+    
+    --left-pane-background-color: #44475a !important;
+    --left-pane-text-color: #f8f8f2;
+    --launcher-pane-background-color: #282a36 !important;
+    --launcher-pane-text-color: #8be9fd !important
+}
+
+body .note-detail-text {
+    font-size: 120%;
+    background-color: #44475a
+}
+
+body .CodeMirror {
+    filter: invert(100%) hue-rotate(180deg);
+}
+
+
+/* --- tree*/
+.tree{
+    background-color: #282a36
+}
+.fancytree-title{
+    color: #f8f8f2
+}
+.fancytree-custom-icon{
+    color: #8be9fd
+} 
+.fancytree-expanded, .fancytree-expander{
+    color: #8be9fd
+}
+.spacer{
+    background-color: #282a36
+}
+.quick-search{
+    background-color: #282a36
+}
+#launcher-pane{
+    background-color: #282a36 !important
+}
+.fancytree-active .fancytree-title{
+    color: #50fa7b
+}
+#left-pane input{
+    background-color: #44475a !important
+}
+#left-pane input::placeholder{
+    color: #f8f8f2;
+    opacity: 0.5
+}
+.tree-actions{
+    background-color:#8be9fd
+}
+.icon-action{
+    color:#8be9fd
+}
+
+
+/* --- notes*/
+h2{
+   color:#50fa7b
+}
+.note-title{font-weight:800}
+.note-icon{
+    color:#8be9fd !important
+}
+.note-book-card{
+    background-color:#44475a !important
+}
+.note-book-title{
+    color: #50fa7b
+}
+/*
+#right-pane{
+    display:none !important;
+}
+.note-tab-wrapper{
+    background-color: #6272a4 !important;
+    color: #f8f8f2;
+}*/
+.note-tab-title{
+    color: #f8f8f2 !important;
+}
+
+h2{
+    font-weight: 900
+}
+
+h3,h4,h5,h6{
+    border: none !important;
+    font-weight: 900
+}
+
+h4{font-size:1rem}

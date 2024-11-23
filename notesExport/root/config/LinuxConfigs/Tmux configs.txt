@@ -1,0 +1,10 @@
+# change leader key
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+# allow mouse on
+set -g mouse on
+
+# allow terminal colours
+set -g default-terminal "screen-256color"
